@@ -2300,8 +2300,7 @@ import time
 # print(typed_fn2(3, 4, 5))
 
 
-
-
-
+print("Новый код")
+print("dd")
 
 
