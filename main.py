@@ -2299,8 +2299,182 @@ import time
 # print(typed_fn2("Hello, ", "World", "!"))
 # print(typed_fn2(3, 4, 5))
 
+# def sr_a(fn):
+#     def wrap(*f_args):
+#         x = fn(*f_args)
+#         print('Среднее арифметическое чисел', end=' ')
+#         print(*f_args, sep=', ', end=' ')
+#         print('=', x / len(f_args))
+#
+#     return wrap
+#
+#
+# @sr_a
+# def summa(*args):
+#     res = 0
+#     for i in args:
+#         res += i
+#     print('Сумма чисел', end=' ')
+#     print(*args, sep=', ', end=' ')
+#     print('=', res)
+#     return res
+#
+#
+# summa(2, 3, 3, 4)
+# def changeCharTostr(s, c_old, c_new):
+#     s2 = ""
+#
+#     for i in s:
+#         if i == c_old:
+#             s2 += c_new
+#             continue
+#         s2 += i
+#
+#     return s2
+#
+#
+#
+#
+# str1 = "Я изучаю Nython. Мне нравится Nython очень интересный язык программирования."
+# str2 = changeCharTostr(str1, "N", "P")
+# print("str1 =", str1)
+# print("str2 =", str2)
+#
+#
+# name = "Дмитрий"
+# age = 25
+# print("Меня зовут " + name + ". Мне " + str(age) + " лет.")
+# print(f"Меня зовут {name}. Мне {age} лет.")
+#
+# round(f"{round(3.15673123), 2}")
+# print(f"{3.434367:.3f}")
 
-print("Изменения")
+
+# x = 10
+# y = 6
+# # print("x =", x)
+# # print(f"{x = }, {y = }")
+# print(f"{x} x {y} / 2 = {x * y / 2}")
+
+# nem = 74
+# print(f"{{{{{nem}}}}}")
+
+# dir_name = "folder"
+# file_name = "file.txt"
+# print(fr"home\{dir_name}\{file_name}")
+# print("home" + "\\" + dir_name + "\\" + file_name)
+
+# def square(n):
+#     """Принимает число n, возвращает квадрат число n"""
+#     return n ** 2
+#
+#
+# print(square(5))
+# print(square.__doc__)
+# print(sum.__doc__)
+
+# import math
+#
+#
+# def cylinder(r, h):
+#     """
+#     Вычисляет площадь цилиндра.
+#
+#     Вычисляет площадь цилиндра на основании заданной высоты и радиуса основания
+#
+#     :param r: положительно число, радиус основания цилиндра
+#     :param h: положительно число, высота цилиндра
+#     :return: положительно число, площадь цилиндра
+#     """
+#     return 2 * math.pi * r * (r + h)
+#
+#
+# print(cylinder(2, 4))
+# print(cylinder.__doc__)
+
+#
+# s = "Test string for me"
+# arr = [ord(x) for x in s]
+# print("ASCII коды:", arr)
+# arr = [int(sum(arr) / len(arr))] + arr
+# print("Среднее арифметическое:", arr)
+# arr += [ord(x) for x in input("-> ")[:3] if ord(x) not in arr]
+# print(arr)
+# print(arr.count(arr[-1]) - 1)
+# arr.sort(reverse=True)
+# print(arr)
+
+# a, b = 97, 122
+# if a > b:
+#     arr = [chr(i) for i in range(b, a + 1)]
+#     print(' '.join(arr))
+# else:
+#     arr = [chr(i) for i in range(a, b + 1)]
+#     print(' '.join(arr))
+# if a < b:
+#     a, b = b, a
+# arr = [chr(i) for i in range(b, a + 1)]
+# print(' '.join(arr))
+
+# print(("apple" == "Apple"))
+# print(("apple" > "Apple")) # 97 > 65
 
 
+# Случайный пароль
 
+# from random import randint
+#
+# SHORTEST = 7
+# LONGEST = 10
+# MIN_ASCII = 33
+# MAX_ASCII = 126
+#
+#
+# def random_password():
+#     rand_len = randint(SHORTEST, LONGEST)
+#     res = ""
+#     for i in range(rand_len):
+#         rand_char = chr(randint(MIN_ASCII, MAX_ASCII))
+#         res += rand_char
+#     return res
+#
+#
+# print("Случайный пароль:", random_password())
+
+# s = "hello, WORLD! I am learning Python."
+# print(s.capitalize())  # Hello, world! i am learning python.
+# print(s.lower())  # Преобр. в ниж регист
+# print(s.upper())  # Преобр. в верх регист
+# print(s.swapcase())  #
+# print(s.title())
+
+# text = input("Введите два слова: ")
+# a = text[:text.find(' ')]
+# b = text[text.find(' ') + 1:]
+# new_text = b + ' ' + a
+# print(new_text)
+
+# def summa(*args):
+#     a = ", ".join(list(map(str, args)))
+#     print('Сумма чисел:', a, "=", sum(args))
+#     return sum(args)
+#
+#
+# summa(2, 3, 3, 4)
+
+def dec(fn):
+    def wrap(*a_args):
+        a = ", ".join(list(map(str, a_args)))
+        print('Среднее арифметическое чисел:,', a, "=", fn(*a_args) / len(a_args))
+
+    return wrap
+
+
+@dec
+def summa(*args):
+    a = ", ".join(list(map(str, args)))
+    print('Сумма чисел:', a, "=", sum(args))
+    return sum(args)
+
+
+summa(2, 3, 3, 4)
