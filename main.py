@@ -7,6 +7,7 @@
 # print(age)
 # print(type(age))
 import math
+import shlex
 import time
 
 # a = 4
@@ -2448,33 +2449,395 @@ import time
 # print(s.swapcase())  #
 # print(s.title())
 
-# text = input("Введите два слова: ")
-# a = text[:text.find(' ')]
-# b = text[text.find(' ') + 1:]
-# new_text = b + ' ' + a
+# s = "hello, WORLD! I am learning Python."
+
+# print(s.count("h", 1, -4)) # count делает подсчет строковых символов
+# print(s.find("l", 4, 19))  # find находит совпадение и выводит число индекса, если он не нашел совпадение то покажет индекс -1
+
+# print(s.find("l"))  # Производит поиск слева на право(индекск)
+# print(s.rfind("l"))  # Производит поиск с право на лево(индекс)
+# print(s.index("l"))  # Производит поиск слева на право(индекск)
+# print(s.rindex("l")) # Производит поиск с право на лево(индекс)
+
+# text = input("Введите два слова: ")  # 'один два'
+# a = text[:text.find(' ')]  # text[:4] => один
+# b = text[text.find(' ') + 1:]  # text[5:] => два
+# new_text = b + ' ' + a  # два один
 # print(new_text)
 
-# def summa(*args):
-#     a = ", ".join(list(map(str, args)))
-#     print('Сумма чисел:', a, "=", sum(args))
-#     return sum(args)
+# s = "hello, WORLD! I am learning Python."
+#
+# print(s.index("I am"))  # 14 индекс
+# print(s.startswith(("I am", "hello")))  # True
+# print(s.endswith("Python."))  # True если в конце строки
+
+# a = "456"
+# print(int(a))
+
+# print('abc123'.isalnum())  # Будет возвращать True если строка не пуста. Поддерживает цифры и буквы
+# print('ABCabc'.isalpha())  # Будет возвращать True если буквы в любом регистре
+# print('123'.isdigit())  # Будет возвращать True если цифры
+
+# print('abc12%^&'.islower())  # Будет возвращать True если буквы в нижнем регистре и есть спец символы
+# print('ABC45&*'.isupper())  # Будет возвращать True если буквы в верхнем регистре и есть спец символы
+
+# print('py'.center(10))  #     py
+# print('py'.center(10, "-"))  # ----py----
+
+
+# print("                py".lstrip())  # убирает пробельные символы с лево
+# print("py                ".rstrip())  # убирает пробельные символы с право
+# print("       py         ".strip())  # убирает пробельные символы с право и слево
+# print('https://www.python.org'.lstrip("/:pths"))  # Удаляет перечень запроса слева
+# print('py.$$$;'.rstrip(';$.'))  # Удаляет перечень запроса с право
+
+# str1 = "Я изучаю Nython. Мне нравится Nython. Nython очень интересный язык программирования."
+# print(str1.replace("Nython", "Python", 2))  #Поиск и заменя количества слов
+
+# s = "-"
+# seq = ("a", "b", "c")
+# print(s.join(seq))  # Объединяет между букв
+#
+# print("..".join(['1', '2']))  # Объединяет между цифр
 #
 #
-# summa(2, 3, 3, 4)
+# print(":".join("Hello"))  # Объединяет между букв
 
-def dec(fn):
-    def wrap(*a_args):
-        a = ", ".join(list(map(str, a_args)))
-        print('Среднее арифметическое чисел:,', a, "=", fn(*a_args) / len(a_args))
+# print('Строка разделенная пробелами'.split())  # Разделяет строку пробелами
+# print('www.python.org'.split('.', 1))  # Количество разбиения по точке с лево
+# print('www.python.org'.rsplit('.', 1))  # Количество разбиения по точке с право
+# print('www...python...org '.split("."))
 
-    return wrap
+# a = input("Введите ФИО: ").split()
+# print(f"{a[0]} {a[1][0]}. {a[2][0]}.")
+
+# a = input("-> ").split()  # Количество разбиения по точке с лево
+# a = list(map(int, a))  # Преобразует тип данных из строковой в числовое
+# print(a)
+# print(type(a[0]))
 
 
-@dec
-def summa(*args):
-    a = ", ".join(list(map(str, args)))
-    print('Сумма чисел:', a, "=", sum(args))
-    return sum(args)
+# Регулярные выражения
+
+import re  # Модуль с работой регулярных выражений - в console прописываем dir(re) для просмотра методов функционала
 
 
-summa(2, 3, 3, 4)
+# s = "Я ищу совпадения в 2023 году. И я их найду в счёта."
+# reg = ' '
+#
+# # print(re.findall(reg, s))  # список, содержащий все совпадения
+# # print(re.search(reg, s))  # месторасположение первого совпадения
+# # print(re.search(reg, s).span())  # Получает доступ к кортежу
+# # print(re.search(reg, s).start())  # Начало свопадения
+# # print(re.search(reg, s).end())  # Конец совпадения
+# # print(re.search(reg, s).group())  # Находит слово по запросу
+# #
+# # print(re.match(reg, s))  # поиск по заданному шаблону в начале строки
+# # print(re.split(reg, s, 3))  # Возвращает список строк, разбитых по шаблону разделителю
+#
+# print(re.sub(reg, "!", s, 3))  # Поиск и замена
+
+# s = "Я ищу совпадения в 2023 году. И я их найду в счёта. 9178"
+# # reg = '[12][0-9][0-9][0-9]'
+# # reg = r'[A-Za-z0+.\[\]-]'
+# reg = r'[^0-9]'
+# print(re.findall(reg, s))  # Возвращает все совпадения
+
+# print(ord("А"))
+# print(ord("Я"))
+# print(ord("Ё"))
+# print(ord("а"))
+# print(ord("я"))
+# print(ord("ё"))
+
+# t = "Час в 24-часовом формате от 00 до 23. 2021-06-15Т21:45. Минуты, в диапазоне от 00 до 59. 2021-06-15Т01:59."
+# p = r'[0-2][0-9]:[0-5][0-9]'
+# print(re.findall(p, t))
+
+# s = "Я ищу совпадения в 2023 году. И я их найду в счёта.  [H^el_lo] 9178"
+# # reg = r'\w+'
+# reg = r'20*'
+# \d - поиск цифр
+# \s - поиск пробельного символа
+# \w - поиск букв цифр и символ подчеркивания _
+# \D - поиск все что угодно кроме цифр
+# \S - поиск все что угодно кроме пробела
+# \W - поиск все кроме букв цифр и символов подчеркивания_
+# r'9178\Z' - ищет символы в конце строки
+# print(re.findall(reg, s))
+
+# text = 'Ежевику для ежат ' \
+#        'Принеси два ежа. ' \
+#        'Ежевику еле-еле ' \
+#        'Ежата возле ели съели'
+#
+# print(text)
+# text_arr = text.split(' ')
+# count = 0
+# for i in text_arr:
+#     if i[0] == 'е' or i[0] == 'Е':
+#         count += 1
+#
+# print(count)
+
+# s = """Ежевику для ежат
+# Принесли два ежа.
+# Ежевику еле-еле
+# Ежата возле ели съели. """
+# print(s)
+# up_e = s.count('Е')
+# lower_e = s.count(' e')
+# count = up_e + lower_e
+# print('кол-во слов:', count)
+
+# d = 'Цифры: 7, +17, -42, 0013, 0.345456654'
+# print(re.findall(r'[+-]?\d+\.?\d*', d))
+
+# s = "05-03-1987 # Дата рождения"
+# print("Дата рождения:", re.sub("#.+", "", s))
+
+
+# s = "12 сентября 2023 года"
+# reg = r'\d{2,4}'
+# print(re.findall(reg, s))
+
+
+# s = '+7 499 456-45-78 , +74994564578 , 7 (499) 456 45 78 , 74994564578'
+# reg = r'\+?7\d{10}'
+# print(re.findall(reg, s))
+
+# s = "Я ищу совпадения в 2023 году. И я их найду в счё-та."
+# # reg = r'^\w+\s\w+'
+# reg = r'^\w+\.$'
+# print(re.findall(reg, s))
+
+# def validate_login(name):
+#     return re.findall('^[A-Za-z_-]{3,16}$', name)
+#
+#
+# print(validate_login('Python_master'))
+# print(validate_login('!!!Python_master'))
+
+
+# print(re.findall(r'\w+', '12 + й'))
+# print(re.findall(r'\w+', '12 + й', flags=re.ASCII))
+# print(re.findall(r'\w+', '12 + й', flags=re.A))
+
+# text = 'hello world'
+# print(re.findall(r'\w\+', text, re.DEBUG))
+
+# s = "Я ищу совпадения в 2023 году. И я их найду в 2 счё-та."
+# reg = r'я'
+# print(re.findall(reg, s, re.IGNORECASE))
+# print(re.findall(reg, s, re.I))
+
+# text = """
+# one
+# two
+# """
+
+# print(re.findall(r'one.\w+', text))
+# print(re.findall(r'one.\w+', text, re.DOTALL))
+# print(re.findall(r'one.\w+', text, re.S))
+# print(re.findall(r'one$', text))
+# print(re.findall(r'one$', text, re.MULTILINE))
+# print(re.findall(r'one$', text, re.M))
+
+# print(re.findall("""
+# [a-z. -]+   # part 1
+# @           # @
+# [a-z.-]+    # part 2
+# """, 'test@mail.ru', re.VERBOSE))
+
+
+# text = """Python
+# python
+# PYTHON"""
+# reg = "(?im)^python"
+# print(re.findall(reg, text))
+
+
+# text = "<body>Пример жадного соответствия регулярных выражений</body>"
+# print(re.findall("<.*>", text))  # [<body>, </body>]
+
+# s = "<p>Изображение <img src='bg.jpg'> - Фон страницы</p>"
+# reg = r'<img\s+[^>]*src\s*\s*[^>]+>'
+# print(re.findall(reg, s))  # [<img src='bg.jpg'> ]
+
+
+# n = int(input("-> "))
+# b = ''
+# while n > 0:
+#     b = str(n % 2) + b
+#     n = n // 2
+#
+# print(b)
+
+# def func(a):
+#     numb = ''
+#     while a > 0:
+#         numb = str(a % 2) + numb
+#         a = a // 2
+#     print(numb)
+#
+#
+# while True:
+#     x = int(input('-> '))
+#     if x == 0:
+#         break
+#     func(x)
+
+# f = open("test.txt")
+# print(f)
+# print(*f)
+# print(f.mode)
+# print(f.)
+# print(f.mode)
+# f.close()
+# print(f.closed)
+
+# f = open("D:\\Учеба\\Python\\test.txt")
+# # f = open("D:\Python330\test.txt")
+# print(f.read(3))
+# print(f.read())
+# f.close()
+
+# f = open("test.txt", "r")
+# print(f.readline())
+# print(f.readline(8))
+# print(f.readline())
+# f.close()
+
+
+# f = open("test.txt", "r")
+# print(f.readlines(3))
+# f.close()
+
+# count = 0
+# f = open("test.txt", "r")
+#
+# for line in f:
+#     count += 1
+# f.close()
+# print(count)
+#
+# f = open("xyz.txt", "w")
+# f.write("Hello \nWorld")
+# f.close()
+#
+# f = open("xyz.txt", "a")
+# f.write("\nNew text.")
+# f.close()
+
+# f = open("xyz.txt", "a")
+# line = ['\nThis is line 1', '\nThis is line 2']
+# f.writelines(line)
+# f.close()
+
+# f = open("xyz.txt", "w")
+# lst = [i for i in range(1, 20)]
+# print(lst)  # '[1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19]'
+# # t = "\t".join(map(str, lst))
+# for index in lst:
+#     f.write(index + '\t')
+# f.close()
+#
+
+# f = open("text2.txt", 'w')
+# f.write("Замена строки с текстовом файле; \nизменить строку в списке;\nзаписать список в файле;\n")
+# f.close()
+#
+# f = open("text2.txt", 'r')
+# in_put = int(input("Чисел: "))
+# read_file = f.readlines()
+# if 0 <= in_put < len(read_file):
+#     del read_file[in_put]
+# else:
+#     print("Иднекс введен некорректно!")
+# print(read_file)
+# f.close()
+
+
+# f = open("test.txt", "r")
+# print(f.read(3))
+# print(f.tell())  # Позиция условного курсора
+# print(f.seek(1))
+# print(f.read())
+# f.close()
+
+# f = open("test.txt", "r+")
+# print(f.write('I am learning Python'))  # 20
+# print(f.seek(3))  # 3
+# print(f.write("-new string-"))  # 12
+# print(f.tell())  # 15
+# f.close()
+
+# with open('test.txt', 'w+') as f:
+#     print(f.write('01234\n56789'))
+#
+# with open('test.txt', 'r') as f:
+#     for line in f:
+#         print(line[:3])
+
+
+# file = "res_1.txt"
+# lst = [4.5, 2.8, 3.9, 1.0, 0.3, 4.33, 7.777]
+#
+#
+# def get_line(lt):
+#     return " ".join((map(str, lt))
+#
+#
+# with open(file, 'w') as f:
+#     f.write(get_line(lst))
+#
+# print("Done!")
+#
+# with opne(file, 'r') as f:
+#     nums = f.read()
+#
+# print(nums)
+#
+# nums_list = list(map(float, nums.split()))
+# print(nums_list)
+# print(sum(nums_list)
+# print(min(nums_list)
+
+# def longest_words(file):
+#     with open(file, "r", encoding="utf-8") as text:
+#         w = text.read().split()
+#         print(w)
+#         max_length = len(max(w, key=len))
+#         print(max_length)
+#         res = [word for word in w if len(word) == max_length]
+#         if len(res) == 1:
+#             return res[0]
+#         return res
+#
+#
+# print(longest_words("test.txt"))
+
+# read_file = "one.txt"
+# write_file = "two.txt"
+# third = "three.txt"
+# text = "Строка №1\nСтрока №2\nСтрока №3\nСтрока №4\nСтрока №5\nСтрока №6\nСтрока №7\nСтрока №8\nСтрока №9\nСтрока №10\n"
+#
+# with open(read_file, 'w') as f:
+#     f.write(text)
+
+# with open(read_file, 'r') as fr, open(write_file, 'w') as fw:
+#     for line in fr:
+#         line = line.replace("Строка", "Линия -")
+#         fw.write(line)
+
+# read_file = "one.txt"
+# write_file = "two.txt"
+# third = "three.txt"
+#
+# with open(read_file, 'r') as f1, open(write_file, 'r') as f2, open(third, 'w') as f3:
+#     file_1 = f1.readlines()
+#     file_2 = f2.readlines()
+#     f4 = file_1 + file_2
+#     f3.writelines(f4)
+
+
