@@ -6,9 +6,9 @@
 # age = "hello"
 # print(age)
 # print(type(age))
-import math
-import shlex
-import time
+# import math
+# import shlex
+# import time
 
 # a = 4
 # print("a =", id(a))
@@ -796,7 +796,7 @@ import time
 # # # n = 11
 # # # if n in s:
 # #     s.remove(n)  # удалит  элемент из списка по значению
-# # last = s.pop(3)  # удаляет элемент по заданному индексу  в круглых скобках, если индекс не передан, то последний элемент из списка
+#  last = s.pop(3)  # удаляет элемент по заданному индексу  в круглых скобках, если индекс не передан, то последний элемент из списка
 # # print(last)
 # s.clear()  # очищает список
 # print(s)
@@ -3141,37 +3141,73 @@ import time
 # p2.print_info()
 # p2.add_skill(2)
 
-arr = ['Замена строки в текстовом файле;', 'изменить строку в списке;', 'записать список в файл;']
+# DZ 15
+# arr = ['Замена строки в текстовом файле;', 'изменить строку в списке;', 'записать список в файл;']
+#
+# with open('text.txt', 'w') as text:
+#     for i in arr:
+#         text.write(i + '\n')
+#
+# full_text = []
+#
+#
+# def read_text():
+#     global full_text
+#     with open ('text.txt', 'r') as text_:
+#         full_text = text_.readlines()
+#         for j in full_text:
+#             print(j, end='')
+#
+#
+# read_text()
+#
+# pos1 = int(input('\n' + 'pos1 = ')) - 1
+# pos2 = int(input('pos2 = ')) - 1
+#
+# print()
+#
+# if 0 <= pos1 <= pos2 <= len(full_text):
+#     full_text[pos1], full_text[pos2] = full_text[pos2], full_text[pos1]
+# else:
+#     print("Индекс введен не верно!")
+#
+# with open('text.txt', 'w') as text:
+#     for i in full_text:
+#         text.writelines(i)
+#
+# read_text()
 
-with open('text.txt', 'w') as text:
-    for i in arr:
-        text.write(i + '\n')
 
-full_text = []
+# def remove_empty_dirs(root_tree):
+#     ...
+#
+#
+# remove_empty_dirs()
 
+# class Point:
+#
+#     def __init__(self, x, y):
+#         self.__x = x
+#         self.__y = y
+#
+#
+# p1 = Point(5, 10)
+# # print(p1.__x, p1.__y)
+# # p1.x = 100
+# # p1.y = "abc"
+# # print(p1.x, p1.y)
+# print(p1.__dict__)
 
-def read_text():
-    global full_text
-    with open ('text.txt', 'r') as text_:
-        full_text = text_.readlines()
-        for j in full_text:
-            print(j, end='')
+import os
 
+dir_name = "nested1"
 
-read_text()
+a = os.listdir(dir_name)
+print(a)
 
-pos1 = int(input('\n' + 'pos1 = ')) - 1
-pos2 = int(input('pos2 = ')) - 1
-
-print()
-
-if 0 <= pos1 <= pos2 <= len(full_text):
-    full_text[pos1], full_text[pos2] = full_text[pos2], full_text[pos1]
-else:
-    print("Индекс введен не верно!")
-
-with open('text.txt', 'w') as text:
-    for i in full_text:
-        text.writelines(i)
-
-read_text()
+for obj in a:
+    p = os.path.join(dir_name, obj)
+    if os.path.isfile(p):
+        print(f"{a} - file - {os.path.getsize(p)} bytes")
+    elif os.path.isdir(p):
+        print(f"{a} - dir")
