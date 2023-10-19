@@ -71,17 +71,93 @@
 # read_text()
 
 # dz 17
+# import os
+#
+# dir_name = "nested1"
+#
+# a = os.listdir(dir_name)
+# print(a)
+#
+# for obj in a:
+#     p = os.path.join(dir_name, obj)
+#     if os.path.isfile(p):
+#         print(f"{a} - file - {os.path.getsize(p)} bytes")
+#     elif os.path.isdir(p):
+#         print(f"{a} - dir")
 
-import os
+# Dz 18
+class Car:
+    model = ""
+    year = "0"
+    manufacturer = ""
+    engine_volume = "0.0"
+    color = ""
+    price = "0.0"
 
-dir_name = "nested1"
+    def print_info(self):
+        print(" Данные автомобиля ".center(40, "*"))
+        print(
+            f"Название модели: {self.model}\nГод выпуска: {self.year}\nПроизводитель: {self.manufacturer}\nМощность двигателя: {self.engine_volume}\nЦвет машины: {self.color}\nЦена: {self.price}")
+        print("=" * 40)
 
-a = os.listdir(dir_name)
-print(a)
+    def input_info(self, model, year, manufacturer, engine_volume, color, price):
+        self.model = model
+        self.year = year
+        self.manufacturer = manufacturer
+        self.engine_volume = engine_volume
+        self.color = color
+        self.price = price
 
-for obj in a:
-    p = os.path.join(dir_name, obj)
-    if os.path.isfile(p):
-        print(f"{a} - file - {os.path.getsize(p)} bytes")
-    elif os.path.isdir(p):
-        print(f"{a} - dir")
+    def set_model(self, model):  # Устанавливает значение
+        self.model = model
+
+    def get_model(self):  # получает значение
+        return self.model
+
+    def set_year(self, year):
+        self.year = year
+
+    def get_year(self):
+        return self.year
+
+    def set_manufacturer(self, manufacturer):
+        self.manufacturer = manufacturer
+
+    def get_manufacturer(self):
+        return self.manufacturer
+
+    def set_engine_volume(self, engine_volume):
+        self.engine_volume = engine_volume
+
+    def get_engine_volume(self):
+        return self.engine_volume
+
+    def set_color(self, color):
+        self.color = color
+
+    def get_color(self):
+        return self.color
+
+    def set_price(self, price):
+        self.price = price
+
+    def get_price(self):
+        return self.price
+
+
+car = Car()
+car.input_info("X7 M50i", 2021, "BMW", "530 л.с.", "white", 10790000)
+car.print_info()
+car.set_model("Q8")
+print(car.get_model())
+car.set_year("2021")
+print(car.get_year())
+car.set_manufacturer("Audi")
+print(car.get_manufacturer())
+car.set_engine_volume("440 л.с.")
+print(car.get_engine_volume())
+car.set_color("blue")
+print(car.get_color())
+car.set_price("7800000")
+print(car.get_price())
+

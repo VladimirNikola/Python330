@@ -3198,16 +3198,428 @@
 # # print(p1.x, p1.y)
 # print(p1.__dict__)
 
-import os
+# Dz17
+# import os
+#
+# dir_name = "nested1"
+#
+# a = os.listdir(dir_name)
+# print(a)
+#
+# for obj in a:
+#     p = os.path.join(dir_name, obj)
+#     if os.path.isfile(p):
+#         print(f"{a} - file - {os.path.getsize(p)} bytes")
+#     elif os.path.isdir(p):
+#         print(f"{a} - dir")
 
-dir_name = "nested1"
+# class Car:
+#     def __init__(self, model='', release_year=0, manufacturer='', engine_volume=0.0, colour='', price=0.0):
+#         self.model = model
+#         self.release_year = release_year
+#         self.manufacturer = manufacturer
+#         self.engine_volume = engine_volume
+#         self.colour = colour
+#         self.price = price
+#
+#     def data_entry(self):
+#         self.model = input('Введите название модели: ')
+#         self.release_year = int(input('Введите год выпуска: '))
+#         self.manufacturer = input('Введите производителя: ')
+#         self.engine_volume = float(input('Введите мощность двигателя: '))
+#         self.colour = input('Введите цвет машины: ')
+#         self.price = float(input('Введите цену: '))
+#
+#     def output_data(self):
+#         print(f'Модель: {self.model}')
+#         print(f'Год выпуска: {self.release_year}')
+#         print(f'Производитель: {self.manufacturer}')
+#         print(f'мощность двигателя: {self.engine_volume}')
+#         print(f'Цвет машины: {self.colour}')
+#         print(f'Цена: {self.price}')
+#
+#     def get_model(self):
+#         return self.model
+#
+#     def get_a_release_year(self):
+#         return self.release_year
+#
+#     def get_producer(self):
+#         return self.manufacturer
+#
+#     def get_the_engine_volume(self):
+#         return self.engine_volume
+#
+#     def get_color(self):
+#         return self.colour
+#
+#     def get_the_price(self):
+#         return self.price
 
-a = os.listdir(dir_name)
-print(a)
 
-for obj in a:
-    p = os.path.join(dir_name, obj)
-    if os.path.isfile(p):
-        print(f"{a} - file - {os.path.getsize(p)} bytes")
-    elif os.path.isdir(p):
-        print(f"{a} - dir")
+# class Car:
+#     def __init__(self):
+#         self.model = ""
+#         self.year = 0
+#         self.manufacturer = ""
+#         self.engine_volume = 0
+#         self.color = ""
+#         self.price = 0
+#
+#     def enter_data(self, model, year, manufacturer, engine_volume, color, price):
+#         self.model = model
+#         self.year = year
+#         self.manufacturer = manufacturer
+#         self.engine_volume = engine_volume
+#         self.color = color
+#         self.price = price
+#
+#     def display_data(self):
+#         print(" Данные автомобиля ".center(10, "*"))
+#         print("Название модели:", self.model)
+#         print("Год выпуска:", self.year)
+#         print("Производитель:", self.manufacturer)
+#         print("Мощность двигателя:", self.engine_volume)
+#         print("Цвет машины:", self.color)
+#         print("Цена:", self.price)
+#         print(40 * '=')
+#
+#
+# car = Car()
+# car.enter_data("X7 M50i", 2021, "BMW", "530 л.с.", "white", 10790000)
+# car.display_data()
+
+
+# class Car:
+#     def __init__(self):
+#         self.model = ""
+#         self.year = 0
+#         self.manufacturer = ""
+#         self.engine_volume = 0.0
+#         self.color = ""
+#         self.price = 0.0
+#
+#     def enter_data(self):
+#         self.model = input("Введите название модели: ")
+#         self.year = int(input("Введите год выпуска: "))
+#         self.manufacturer = input("Введите производителя: ")
+#         self.engine_volume = float(input("Введите мощность двигателя: "))
+#         self.color = input("Введите цвет машины: ")
+#         self.price = float(input("Введите цену: "))
+#
+#     def display_data(self):
+#         print(" Данные автомобиля ".center(10, "*"))
+#         print("Название модели:", self.model)
+#         print("Год выпуска:", self.year)
+#         print("Производитель:", self.manufacturer)
+#         print("Мощность двигателя:", self.engine_volume)
+#         print("Цвет машины:", self.color)
+#         print("Цена:", self.price)
+#         print(40 * '=')
+#
+#     def get_model(self):
+#         return self.model
+#
+#     def get_year(self):
+#         return self.year
+#
+#     def get_manufacturer(self):
+#         return self.manufacturer
+#
+#     def get_engine_volume(self):
+#         return self.engine_volume
+#
+#     def get_color(self):
+#         return self.color
+#
+#     def get_price(self):
+#         return self.price
+#
+#
+# car = Car()
+# car.enter_data()
+# car.display_data()
+
+# class Car:
+#     model = ""
+#     year = "0"
+#     manufacturer = ""
+#     engine_volume = "0.0"
+#     color = ""
+#     price = "0.0"
+#
+#     def print_info(self):
+#         print(" Данные автомобиля ".center(40, "*"))
+#         print(
+#             f"Название модели: {self.model}\nГод выпуска: {self.year}\nПроизводитель: {self.manufacturer}\nМощность двигателя: {self.engine_volume}\nЦвет машины: {self.color}\nЦена: {self.price}")
+#         print("=" * 40)
+#
+#     def input_info(self, model, year, manufacturer, engine_volume, color, price):
+#         self.model = model
+#         self.year = year
+#         self.manufacturer = manufacturer
+#         self.engine_volume = engine_volume
+#         self.color = color
+#         self.price = price
+#
+#     def set_model(self, model):  # Устанавливает значение
+#         self.model = model
+#
+#     def get_model(self):  # получает значение
+#         return self.model
+#
+#     def set_year(self, year):
+#         self.year = year
+#
+#     def get_year(self):
+#         return self.year
+#
+#     def set_manufacturer(self, manufacturer):
+#         self.manufacturer = manufacturer
+#
+#     def get_manufacturer(self):
+#         return self.manufacturer
+#
+#     def set_engine_volume(self, engine_volume):
+#         self.engine_volume = engine_volume
+#
+#     def get_engine_volume(self):
+#         return self.engine_volume
+#
+#     def set_color(self, color):
+#         self.color = color
+#
+#     def get_color(self):
+#         return self.color
+#
+#     def set_price(self, price):
+#         self.price = price
+#
+#     def get_price(self):
+#         return self.price
+#
+#
+# car = Car()
+# car.input_info("X7 M50i", 2021, "BMW", "530 л.с.", "white", 10790000)
+# car.print_info()
+# car.set_model("Q8")
+# print(car.get_model())
+# car.set_year("2021")
+# print(car.get_year())
+# car.set_manufacturer("Audi")
+# print(car.get_manufacturer())
+# car.set_color("blue")
+# print(car.get_color())
+# car.set_price("7800000")
+# print(car.get_price())
+
+# class Point:
+#     __count = 0
+#
+#     def __init__(self, x=0, y=0):
+#         self.x = x
+#         self.y = y
+#         Point.__count += 1
+#
+#     def get_count(self):
+#         return Point.__count
+#
+#
+# p1 = Point()
+# p2 = Point()
+# p3 = Point()
+# print(Point.__count)
+
+# class Change:
+#     @staticmethod
+#     def inc(x):
+#         return x + 1
+#
+#     @staticmethod
+#     def dec(x):
+#         return x - 1
+#
+#
+# print(Change.inc(10), Change.dec(10))
+
+# class Number:
+#     @staticmethod
+#     def max(a, b, c, d):
+#         mx = a  # 3
+#         if b > mx:
+#             mx = b  # 5
+#         if c > mx:
+#             mx = c  # 7
+#         if d > mx:
+#             mx = d  # 9
+#         return mx
+#
+#     @staticmethod
+#     def min(*args):  # (3, 5, 7, 9)
+#         mn = args[0]
+#         for i in args:
+#             if i < mn:
+#                 mn = i
+#         return mn
+#
+#     @staticmethod
+#     def average(a, b, c, d):
+#         return (a + b + c + d) / 4
+#
+#     @staticmethod
+#     def factorial(n):  # 5
+#         fact = 1
+#         for i in range(1, n + 1):  # 1 2 3 4 5
+#             fact *= i  # fact = fact * i
+#         return fact
+#
+#
+# print("Максимальное число:", Number.max(3, 5, 7, 9))
+# print("Минимальное число:", Number.min(3, 5, 7, 9))
+# print("Среднее арифметическое:", Number.average(3, 5, 7, 9))
+# print("Факториал числа:", Number.factorial(5))
+# 5! = 1*2*3*4*5
+
+# class Date:
+#     def __init__(self, day=0, month=0, year=0):
+#         self.day = day
+#         self.month = month
+#         self.year = year
+#
+#     def string_to_db(self):
+#         return f"{self.year}-{self.month}-{self.day}"
+#
+#     @classmethod
+#     def from_string(cls, string_data):
+#         day, month, year = map(int, string_data.split("."))
+#         date1 = cls(day, month, year)
+#         return date1
+#
+#     @staticmethod
+#     def is_data_valid(date_as_string):
+#         if date_as_string.count(".") == 2:
+#             day, month, year = map(int, date_as_string.split("."))
+#             return day <= 31 and month <= 12 and year <= 3999
+#
+#
+#
+# dates = [
+#     '30.12.2023',
+#     '30-12-2020',
+#     '01.01.2021',
+#     '12.31.2023'
+# ]
+#
+# for string_date in dates:
+#     if Date.is_data_valid(string_date):
+#         date = Date.from_string(string_date)
+#         date_db = date.string_to_db()
+#         print(date_db)
+#     else:
+#         print(f"Неправильная дата или формат строки с датой")
+
+
+
+# date2 = Date.from_string('23.10.2023')
+# # date = Date(day, month, year)
+# print(date2.string_to_db())
+#
+# date3 = Date.from_string('21.12.2023')
+# print(date3.string_to_db())
+
+
+class Account:
+    rate_usd = 0.013  # 2
+    rate_eur = 0.011  # 3
+    suffix = 'RUB'
+    suffix_usd = "USD"
+    suffix_eur = "EUR"
+
+    def __init__(self, surname, num, percent, value):
+        self.num = num
+        self.surname = surname
+        self.percent = percent
+        self.value = value
+        print(f"Счет №{self.num} принадлежащий {self.surname} был открыт.")
+        print("*" * 50)
+
+    def __del__(self):
+        print("*" * 50)
+        print(f"Счет №{self.num} принадлежащий {self.surname} был закрыт.")
+
+    @staticmethod
+    def convert(value, rate):
+        return value * rate
+
+    @classmethod
+    def set_usd_rate(cls, rate):
+        cls.rate_usd = rate
+
+    @classmethod
+    def set_eur_rate(cls, rate):
+        cls.rate_eur = rate
+
+    def convert_to_usd(self):
+        usd_val = Account.convert(self.value, Account.rate_usd)
+        print(f'Состояние счета: {usd_val} {Account.suffix_usd}')
+
+    def convert_to_eur(self):
+        eur_val = Account.convert(self.value, Account.rate_eur)
+        print(f'Состояние счета: {eur_val} {Account.suffix_eur}')
+
+    def edit_owner(self, surname):
+        self.surname = surname
+
+    def add_percents(self):
+        self.value += self.value * self.percent
+        print("Проценты были успешно начислены")
+        self.print_balance()
+
+    def withdraw_money(self, val):
+        if val > self.value:
+            print(f"К сожалению у вас нет {val} {Account.suffix}")
+        else:
+            self.value -= val
+            print(f"{val} {Account.suffix} было успешно снято!")
+        self.print_balance()
+
+    def add_money(self, val):
+        self.value += val
+        print(f"{val} {Account.suffix} было успешно добавлено!")
+        self.print_balance()
+
+    def print_balance(self):
+        print(f"Текущий баланс {self.value} {Account.suffix}")
+
+    def print_info(self):
+        print('Информация о счете:')
+        print('-' * 20)
+        print(f"№{self.num}")
+        print(f"Владелец: {self.surname}")
+        self.print_balance()
+        print(f"Проценты: {self.percent:.0%}")
+        print('-' * 20)
+
+
+acc = Account("Долгих", '12345', 0.03, 1000)
+acc.print_info()
+acc.convert_to_usd()
+acc.convert_to_eur()
+print()
+Account.set_usd_rate(2)
+acc.convert_to_usd()
+Account.set_eur_rate(3)
+acc.convert_to_eur()
+print()
+acc.edit_owner("Дюма")
+acc.print_info()
+acc.add_percents()
+print()
+acc.withdraw_money(3000)
+print()
+acc.withdraw_money(100)
+print()
+acc.add_money(5000)
+print()
+acc.withdraw_money(3000)
+print()
