@@ -86,78 +86,140 @@
 #         print(f"{a} - dir")
 
 # Dz 18
-class Car:
-    model = ""
-    year = "0"
-    manufacturer = ""
-    engine_volume = "0.0"
-    color = ""
-    price = "0.0"
+# class Car:
+#     model = ""
+#     year = "0"
+#     manufacturer = ""
+#     engine_volume = "0.0"
+#     color = ""
+#     price = "0.0"
+#
+#     def print_info(self):
+#         print(" Данные автомобиля ".center(40, "*"))
+#         print(
+#             f"Название модели: {self.model}\nГод выпуска: {self.year}\nПроизводитель: {self.manufacturer}\nМощность двигателя: {self.engine_volume}\nЦвет машины: {self.color}\nЦена: {self.price}")
+#         print("=" * 40)
+#
+#     def input_info(self, model, year, manufacturer, engine_volume, color, price):
+#         self.model = model
+#         self.year = year
+#         self.manufacturer = manufacturer
+#         self.engine_volume = engine_volume
+#         self.color = color
+#         self.price = price
+#
+#     def set_model(self, model):  # Устанавливает значение
+#         self.model = model
+#
+#     def get_model(self):  # получает значение
+#         return self.model
+#
+#     def set_year(self, year):
+#         self.year = year
+#
+#     def get_year(self):
+#         return self.year
+#
+#     def set_manufacturer(self, manufacturer):
+#         self.manufacturer = manufacturer
+#
+#     def get_manufacturer(self):
+#         return self.manufacturer
+#
+#     def set_engine_volume(self, engine_volume):
+#         self.engine_volume = engine_volume
+#
+#     def get_engine_volume(self):
+#         return self.engine_volume
+#
+#     def set_color(self, color):
+#         self.color = color
+#
+#     def get_color(self):
+#         return self.color
+#
+#     def set_price(self, price):
+#         self.price = price
+#
+#     def get_price(self):
+#         return self.price
+#
+#
+# car = Car()
+# car.input_info("X7 M50i", 2021, "BMW", "530 л.с.", "white", 10790000)
+# car.print_info()
+# car.set_model("Q8")
+# print(car.get_model())
+# car.set_year("2021")
+# print(car.get_year())
+# car.set_manufacturer("Audi")
+# print(car.get_manufacturer())
+# car.set_engine_volume("440 л.с.")
+# print(car.get_engine_volume())
+# car.set_color("blue")
+# print(car.get_color())
+# car.set_price("7800000")
+# print(car.get_price())
 
-    def print_info(self):
-        print(" Данные автомобиля ".center(40, "*"))
-        print(
-            f"Название модели: {self.model}\nГод выпуска: {self.year}\nПроизводитель: {self.manufacturer}\nМощность двигателя: {self.engine_volume}\nЦвет машины: {self.color}\nЦена: {self.price}")
-        print("=" * 40)
+# dz 19
 
-    def input_info(self, model, year, manufacturer, engine_volume, color, price):
-        self.model = model
-        self.year = year
-        self.manufacturer = manufacturer
-        self.engine_volume = engine_volume
-        self.color = color
-        self.price = price
+class Rectangle:
+    def __init__(self, breadth, length):
+        self.__breadth = breadth
+        self.__length = length
 
-    def set_model(self, model):  # Устанавливает значение
-        self.model = model
+    @property
+    def breadth(self):
+        return self.__breadth
 
-    def get_model(self):  # получает значение
-        return self.model
+    @breadth.setter
+    def breadth(self, val):
+        if Rectangle.check_value(val):
+            self.__breadth = val
+        else:
+            print("Неверный тип данных")
 
-    def set_year(self, year):
-        self.year = year
+    @property
+    def length(self):
+        return self.__length
 
-    def get_year(self):
-        return self.year
-
-    def set_manufacturer(self, manufacturer):
-        self.manufacturer = manufacturer
-
-    def get_manufacturer(self):
-        return self.manufacturer
-
-    def set_engine_volume(self, engine_volume):
-        self.engine_volume = engine_volume
-
-    def get_engine_volume(self):
-        return self.engine_volume
-
-    def set_color(self, color):
-        self.color = color
-
-    def get_color(self):
-        return self.color
-
-    def set_price(self, price):
-        self.price = price
-
-    def get_price(self):
-        return self.price
+    @length.setter
+    def length(self, val):
+        if Rectangle.check_value(val):
+            self.__length = val
+        else:
+            print("Неверный тип данных")
 
 
-car = Car()
-car.input_info("X7 M50i", 2021, "BMW", "530 л.с.", "white", 10790000)
-car.print_info()
-car.set_model("Q8")
-print(car.get_model())
-car.set_year("2021")
-print(car.get_year())
-car.set_manufacturer("Audi")
-print(car.get_manufacturer())
-car.set_engine_volume("440 л.с.")
-print(car.get_engine_volume())
-car.set_color("blue")
-print(car.get_color())
-car.set_price("7800000")
-print(car.get_price())
+    @staticmethod
+    def check_value(s):
+        if isinstance(s, (int, float)):
+            return True
+        return False
 
+    def square(self):
+        return self.__breadth * self.__length
+
+    def perimeter(self):
+        return (self.__breadth + self.__length) * 2
+
+    def hypotenuse(self):
+        return round(math.sqrt(self.__breadth ** 2 + self.__length ** 2), 2)
+
+    def print_rectangle(self):
+        print(("*" * self.__breadth + "\n") * self.length)
+
+
+a = 15
+b = 8
+obj = Rectangle(a, b)
+# print("Длина прямоугольника:", obj.length)
+# print("Ширина прямоугольника:", obj.breadth)
+obj.length = 3
+obj.breadth = 9
+print("Длина прямоугольника:", obj.length)
+print("Ширина прямоугольника:", obj.breadth)
+print("Площадь прямоугольника:", obj.square())
+print("Периметр прямоугольника:", obj.perimeter())
+print("Гипотенуза прямоугольника:", obj.hypotenuse())
+obj.print_rectangle()

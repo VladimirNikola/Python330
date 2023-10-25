@@ -795,8 +795,9 @@
 # print(s)
 # # # n = 11
 # # # if n in s:
-# #     s.remove(n)  # удалит  элемент из списка по значению
-#  last = s.pop(3)  # удаляет элемент по заданному индексу  в круглых скобках, если индекс не передан, то последний элемент из списка
+#  s.remove(n)  # удалит  элемент из списка по значению
+# last = s.pop(3) - удаляет элемент по заданному индексу в круглых скобках, если индекс не передан, то последний элемент из списка
+
 # # print(last)
 # s.clear()  # очищает список
 # print(s)
@@ -3519,7 +3520,6 @@
 #         print(f"Неправильная дата или формат строки с датой")
 
 
-
 # date2 = Date.from_string('23.10.2023')
 # # date = Date(day, month, year)
 # print(date2.string_to_db())
@@ -3528,98 +3528,403 @@
 # print(date3.string_to_db())
 
 
-class Account:
-    rate_usd = 0.013  # 2
-    rate_eur = 0.011  # 3
-    suffix = 'RUB'
-    suffix_usd = "USD"
-    suffix_eur = "EUR"
+# class Account:
+#     rate_usd = 0.013  # 2
+#     rate_eur = 0.011  # 3
+#     suffix = 'RUB'
+#     suffix_usd = "USD"
+#     suffix_eur = "EUR"
+#
+#     def __init__(self, surname, num, percent, value):
+#         self.num = num
+#         self.surname = surname
+#         self.percent = percent
+#         self.value = value
+#         print(f"Счет №{self.num} принадлежащий {self.surname} был открыт.")
+#         print("*" * 50)
+#
+#     def __del__(self):
+#         print("*" * 50)
+#         print(f"Счет №{self.num} принадлежащий {self.surname} был закрыт.")
+#
+#     @staticmethod
+#     def convert(value, rate):
+#         return value * rate
+#
+#     @classmethod
+#     def set_usd_rate(cls, rate):
+#         cls.rate_usd = rate
+#
+#     @classmethod
+#     def set_eur_rate(cls, rate):
+#         cls.rate_eur = rate
+#
+#     def convert_to_usd(self):
+#         usd_val = Account.convert(self.value, Account.rate_usd)
+#         print(f'Состояние счета: {usd_val} {Account.suffix_usd}')
+#
+#     def convert_to_eur(self):
+#         eur_val = Account.convert(self.value, Account.rate_eur)
+#         print(f'Состояние счета: {eur_val} {Account.suffix_eur}')
+#
+#     def edit_owner(self, surname):
+#         self.surname = surname
+#
+#     def add_percents(self):
+#         self.value += self.value * self.percent
+#         print("Проценты были успешно начислены")
+#         self.print_balance()
+#
+#     def withdraw_money(self, val):
+#         if val > self.value:
+#             print(f"К сожалению у вас нет {val} {Account.suffix}")
+#         else:
+#             self.value -= val
+#             print(f"{val} {Account.suffix} было успешно снято!")
+#         self.print_balance()
+#
+#     def add_money(self, val):
+#         self.value += val
+#         print(f"{val} {Account.suffix} было успешно добавлено!")
+#         self.print_balance()
+#
+#     def print_balance(self):
+#         print(f"Текущий баланс {self.value} {Account.suffix}")
+#
+#     def print_info(self):
+#         print('Информация о счете:')
+#         print('-' * 20)
+#         print(f"№{self.num}")
+#         print(f"Владелец: {self.surname}")
+#         self.print_balance()
+#         print(f"Проценты: {self.percent:.0%}")
+#         print('-' * 20)
+#
+#
+# acc = Account("Долгих", '12345', 0.03, 1000)
+# acc.print_info()
+# acc.convert_to_usd()
+# acc.convert_to_eur()
+# print()
+# Account.set_usd_rate(2)
+# acc.convert_to_usd()
+# Account.set_eur_rate(3)
+# acc.convert_to_eur()
+# print()
+# acc.edit_owner("Дюма")
+# acc.print_info()
+# acc.add_percents()
+# print()
+# acc.withdraw_money(3000)
+# print()
+# acc.withdraw_money(100)
+# print()
+# acc.add_money(5000)
+# print()
+# acc.withdraw_money(3000)
+# print()
 
-    def __init__(self, surname, num, percent, value):
-        self.num = num
-        self.surname = surname
-        self.percent = percent
-        self.value = value
-        print(f"Счет №{self.num} принадлежащий {self.surname} был открыт.")
-        print("*" * 50)
+# class KgToPounds:
+#     def __init__(self, kg):
+#         if isinstance(kg, (int, float)):
+#             self.__kg = kg
+#         else:
+#             self.kg = 0
+#
+#     @property
+#     def kg(self):
+#         return self.__kg
+#
+#     @kg.setter
+#     def kg(self, new_kg):
+#         if isinstance(new_kg, (int, float)):
+#             self.__kg = new_kg
+#         else:
+#             print("Килограммы задаются только числами")
+#
+#     def to_pounds(self):
+#         return self.__kg * 2.205
+#
+#
+# weight = KgToPounds(12)
+# print(f"{weight.kg} кг => {weight.to_pounds()} фунтов")
+# weight.kg = 41
+# print(f"{weight.kg} кг => {weight.to_pounds()} фунтов")
 
-    def __del__(self):
-        print("*" * 50)
-        print(f"Счет №{self.num} принадлежащий {self.surname} был закрыт.")
+# Создать класс Rectangle, описывающий прямоугольник. В классе должны быть все необходимые методы, а так же методы вычисления площади, периметра и диагонали, и метод, который рисует прямоуголник.
+
+import math
+
+
+class Rectangle:
+    def __init__(self, breadth, length):
+        self.__breadth = breadth
+        self.__length = length
+
+    @property
+    def breadth(self):
+        return self.__breadth
+
+    @breadth.setter
+    def breadth(self, val):
+        if Rectangle.check_value(val):
+            self.__breadth = val
+        else:
+            print("Неверный тип данных")
+
+    @property
+    def length(self):
+        return self.__length
+
+    @length.setter
+    def length(self, val):
+        if Rectangle.check_value(val):
+            self.__length = val
+        else:
+            print("Неверный тип данных")
+
 
     @staticmethod
-    def convert(value, rate):
-        return value * rate
+    def check_value(s):
+        if isinstance(s, (int, float)):
+            return True
+        return False
 
-    @classmethod
-    def set_usd_rate(cls, rate):
-        cls.rate_usd = rate
+    def square(self):
+        return self.__breadth * self.__length
 
-    @classmethod
-    def set_eur_rate(cls, rate):
-        cls.rate_eur = rate
+    def perimeter(self):
+        return (self.__breadth + self.__length) * 2
 
-    def convert_to_usd(self):
-        usd_val = Account.convert(self.value, Account.rate_usd)
-        print(f'Состояние счета: {usd_val} {Account.suffix_usd}')
+    def hypotenuse(self):
+        return round(math.sqrt(self.__breadth ** 2 + self.__length ** 2), 2)
 
-    def convert_to_eur(self):
-        eur_val = Account.convert(self.value, Account.rate_eur)
-        print(f'Состояние счета: {eur_val} {Account.suffix_eur}')
-
-    def edit_owner(self, surname):
-        self.surname = surname
-
-    def add_percents(self):
-        self.value += self.value * self.percent
-        print("Проценты были успешно начислены")
-        self.print_balance()
-
-    def withdraw_money(self, val):
-        if val > self.value:
-            print(f"К сожалению у вас нет {val} {Account.suffix}")
-        else:
-            self.value -= val
-            print(f"{val} {Account.suffix} было успешно снято!")
-        self.print_balance()
-
-    def add_money(self, val):
-        self.value += val
-        print(f"{val} {Account.suffix} было успешно добавлено!")
-        self.print_balance()
-
-    def print_balance(self):
-        print(f"Текущий баланс {self.value} {Account.suffix}")
-
-    def print_info(self):
-        print('Информация о счете:')
-        print('-' * 20)
-        print(f"№{self.num}")
-        print(f"Владелец: {self.surname}")
-        self.print_balance()
-        print(f"Проценты: {self.percent:.0%}")
-        print('-' * 20)
+    def print_rectangle(self):
+        # for i in range(self.__length):
+        #     for j in range(self.__breadth):
+        #         print('*', end='')
+        #     print()
+        print(("*" * self.__breadth + "\n") * self.length)
 
 
-acc = Account("Долгих", '12345', 0.03, 1000)
-acc.print_info()
-acc.convert_to_usd()
-acc.convert_to_eur()
-print()
-Account.set_usd_rate(2)
-acc.convert_to_usd()
-Account.set_eur_rate(3)
-acc.convert_to_eur()
-print()
-acc.edit_owner("Дюма")
-acc.print_info()
-acc.add_percents()
-print()
-acc.withdraw_money(3000)
-print()
-acc.withdraw_money(100)
-print()
-acc.add_money(5000)
-print()
-acc.withdraw_money(3000)
-print()
+a = 15
+b = 8
+obj = Rectangle(a, b)
+# print("Длина прямоугольника:", obj.length)
+# print("Ширина прямоугольника:", obj.breadth)
+obj.length = 3
+obj.breadth = 9
+print("Длина прямоугольника:", obj.length)
+print("Ширина прямоугольника:", obj.breadth)
+print("Площадь прямоугольника:", obj.square())
+print("Периметр прямоугольника:", obj.perimeter())
+print("Гипотенуза прямоугольника:", obj.hypotenuse())
+obj.print_rectangle()
+
+
+# try:
+#     class Rectangle:
+#         def __init__(self, length, width):
+#             self.length = length
+#             self.width = width
+#
+#         def info(self, length, width):
+#
+#             print(f"Длина прямоугольника: {self.length}\nШирина прямоугольника: {self.width}")
+#
+#         def square(self):
+#
+#             print(f"Площадь прямоугольника:", self.length * self.width)
+#             for i in range(self.length):
+#                 for j in range(self.width):
+#                     print("*", end=" ")
+#                 print()
+#
+#     def perimeter(self):
+#
+#         print(f"Периметр прямоугольника:", 2 * (self.length + self.width))
+#
+#     def hypotenuse(self):
+#
+#         s = (self.length ** 2 + self.width ** 2) ** 0.5
+#
+#         print(f"Гипотенуза прямоугольника:", round(s, 2))
+#
+#
+#     p1 = Rectangle(3, 9)
+#
+#     p1.info(3, 9)
+#
+#     p1.square()
+#
+#     p1.perimeter()
+#
+#     p1.hypotenuse()
+#
+#
+# except NameError:
+#
+#     print("Нет такого значения только цифры!")
+
+# import re
+#
+# class UserData:
+#     def __init__(self, fio, old, ps, weight):
+#         self.fio = fio
+#         self.old = old
+#         self.password = ps
+#         self.weight = weight
+#
+#     @staticmethod
+#     def verify_fio(fio):
+#         if not isinstance(fio, str):
+#             raise TypeError("ФИО должно быть строкой")
+#         f = fio.split()  # ['Волков2', 'Игорь!', 'Николаевич']
+#         if len(f) != 3:
+#             raise TypeError("Неверный формат ФИО")
+#         # ['В', 'о', 'л', 'к', 'о', 'в', 'И', 'г', 'о', 'р', 'ь', 'Н', 'и', 'к', 'о', 'л', 'а', 'е', 'в', 'и', 'ч']
+#         letters = "".join(re.findall("[a-zа-яё-]", fio, re.IGNORECASE))  # ВолковИгорьНиколаевич
+#         for s in f:
+#             # print(s.strip(letters))
+#             if len(s.strip(letters)) != 0:
+#                 raise TypeError("В ФИО можно использовать только буквы и дефис")
+#
+#     @staticmethod
+#     def verify_old(old):
+#         if not isinstance(old, int) or old < 14 or old > 120:
+#             raise TypeError("Возраст должен быть числом в диапазоне от 14 до 120 лет")
+#
+#     @staticmethod
+#     def verify_weight(w):
+#         if not isinstance(w, float) or w < 20:
+#             raise TypeError("Вес должен быть вещественным числом от 20 кг и выше")
+#
+#     @staticmethod
+#     def verify_ps(ps):
+#         if not isinstance(ps, str):
+#             raise TypeError("Паспорт должен быть строкой")
+#         s = ps.split()  # ['1234', '567890']
+#         if len(s) != 2 or len(s[0]) != 4 or len(s[1]) != 6:
+#             raise TypeError("Неверный формат паспорта")
+#         for p in s:
+#             if not p.isdigit():
+#                 raise TypeError("Серия и номер паспорта должны быть числами")
+#
+#     @property
+#     def fio(self):
+#         return self.__fio
+#
+#     @fio.setter
+#     def fio(self, fio):
+#         self.verify_fio(fio)
+#         self.__fio = fio
+#
+#     @property
+#     def old(self):
+#         return self.__old
+#
+#     @old.setter
+#     def old(self, val):
+#         self.verify_old(val)
+#         self.__old = val
+#
+#     @property
+#     def password(self):
+#         return self.__password
+#
+#     @password.setter
+#     def password(self, ps):
+#         self.verify_ps(ps)
+#         self.__password = ps
+#
+#     @property
+#     def weight(self):
+#         return self.__weight
+#
+#     @weight.setter
+#     def weight(self, w):
+#         self.verify_weight(w)
+#         self.__weight = w
+#
+#
+# p1 = UserData("Волков Игорь Николаевич", 26, "1234 567890", 80.8)
+# p1.fio = "Рыцарев Игорь Николаевич"
+# print(p1.fio)
+# print(p1.__dict__)
+
+# Наследование
+# Базовый (родительский, суперкласс)
+#          дочерний(класс-наследник, подкласс)
+
+# class Point:
+#     """Точка в двумерном пространстве """
+#     def __init__(self, x, y):
+#         self.x = x
+#         self.y = y
+
+
+# print(issubclass(Point, object))
+# print(Point.__dict__)
+
+# class Point:
+#     """Точка в двумерном пространстве """
+#     def __init__(self, x, y):
+#         self.x = x
+#         self.y = y
+#
+#     def __str__(self):
+#         return f"({self.x}, {self.y})"
+#
+#
+# class Prop:
+#     def __init__(self, sp: Point, ep: Point, color: str = "red", width: int = 1):
+#         print("Инициализатор базового класса")
+#         self._sp = sp  # self._sp = Point(1, 2)
+#         self._ep = ep
+#         self._color = color
+#         self.__width = width
+#
+#     def get_width(self):
+#         return self.__width
+#
+#
+# class Line(Prop):
+#     def __init__(self, *args):
+#         print("Переопределенный инициализатор Line")
+#         # Prop.__init__(self, *args)
+#         super().__init__(*args)
+#
+#     def draw_line(self):
+#         print(f"Рисование линии: {self._sp}, {self._ep}, {self._color}, {self.get_width()}")
+#
+#
+# class Rect(Prop):
+#
+#     def draw_rect(self):
+#         print(f"Рисование прямоугольника: {self._sp}, {self._ep}, {self._color}, {self.get_width()}")
+#
+#
+# line = Line(Point(1, 2), Point(10, 20), "yellow", 5)
+# line.draw_line()
+#
+# rect = Rect(Point(30, 40), Point(70, 80))
+# rect.draw_rect()
+
+# DRY (Dont Repeat Yourself) - не повторяйся
+
+# Модификаторы доступа:
+# public (открытие
+
+# class Figure:
+#     ...
+    # родительский класс
+    # в инициализаторе __color
+
+
+# class Rectangle:
+#     ...
+    # дочерний класс
+
+    # создать метод нахождения площади фигуры
+
+    # проверка на ввод отрицательных значений
