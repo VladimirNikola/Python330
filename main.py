@@ -242,7 +242,7 @@
 #     print('Треугольник разносторонний')
 
 
-# day = int(input("Введите день недели цифрой: "))  # 3
+# day = int(input("Введите день недели цифрой: ")) # 3
 # if 1 <= day <= 5:  # (day >= 1) and (day <= 5)
 #     print("Рабочий день -", end=" ")
 #     if day == 1:
@@ -2554,7 +2554,7 @@
 # p = r'[0-2][0-9]:[0-5][0-9]'
 # print(re.findall(p, t))
 
-# s = "Я ищу совпадения в 2023 году. И я их найду в счёта.  [H^el_lo] 9178"
+# s = "Я ищу совпадения в 2023 году. И я их найду в счёт.  [H^el_lo] 9178"
 # # reg = r'\w+'
 # reg = r'20*'
 # \d - поиск цифр
@@ -2868,10 +2868,10 @@
 # print(os.listdir(r"D:\Учеба\JavaScript"))
 
 # os.mkdir("folder_2")  # создание директории(папку)
-# os.makedirs("nested1/nested2/nested3")  # создает не только конечную директорию, но и промежуточные
+# os.makedirs("nested1/nested2/nested3") # создает не только конечную директорию, но и промежуточные
 
 # os.rmdir("folder_2")  # Удаляет папку если пустой каталог
-# os.rename('xyz.txt', 'x.txt')  # Переименование файлов и каталогов
+# os.rename('xyz.txt', 'x.txt') # Переименование файлов и каталогов
 
 # os.rename("x.txt", 'nested1/x.txt')  # Перемещение файла в папку
 
@@ -3422,14 +3422,17 @@
 #         self.y = y
 #         Point.__count += 1
 #
-#     def get_count(self):
+#     @staticmethod
+#     def get_count():
 #         return Point.__count
+#
+#     get_count = staticmethod(get_count)
 #
 #
 # p1 = Point()
 # p2 = Point()
 # p3 = Point()
-# print(Point.__count)
+# print(Point.get_count())
 
 # class Change:
 #     @staticmethod
@@ -3653,73 +3656,73 @@
 
 # Создать класс Rectangle, описывающий прямоугольник. В классе должны быть все необходимые методы, а так же методы вычисления площади, периметра и диагонали, и метод, который рисует прямоуголник.
 
-import math
-
-
-class Rectangle:
-    def __init__(self, breadth, length):
-        self.__breadth = breadth
-        self.__length = length
-
-    @property
-    def breadth(self):
-        return self.__breadth
-
-    @breadth.setter
-    def breadth(self, val):
-        if Rectangle.check_value(val):
-            self.__breadth = val
-        else:
-            print("Неверный тип данных")
-
-    @property
-    def length(self):
-        return self.__length
-
-    @length.setter
-    def length(self, val):
-        if Rectangle.check_value(val):
-            self.__length = val
-        else:
-            print("Неверный тип данных")
-
-
-    @staticmethod
-    def check_value(s):
-        if isinstance(s, (int, float)):
-            return True
-        return False
-
-    def square(self):
-        return self.__breadth * self.__length
-
-    def perimeter(self):
-        return (self.__breadth + self.__length) * 2
-
-    def hypotenuse(self):
-        return round(math.sqrt(self.__breadth ** 2 + self.__length ** 2), 2)
-
-    def print_rectangle(self):
-        # for i in range(self.__length):
-        #     for j in range(self.__breadth):
-        #         print('*', end='')
-        #     print()
-        print(("*" * self.__breadth + "\n") * self.length)
-
-
-a = 15
-b = 8
-obj = Rectangle(a, b)
+# import math
+#
+#
+# class Rectangle:
+#     def __init__(self, breadth, length):
+#         self.__breadth = breadth
+#         self.__length = length
+#
+#     @property
+#     def breadth(self):
+#         return self.__breadth
+#
+#     @breadth.setter
+#     def breadth(self, val):
+#         if Rectangle.check_value(val):
+#             self.__breadth = val
+#         else:
+#             print("Неверный тип данных")
+#
+#     @property
+#     def length(self):
+#         return self.__length
+#
+#     @length.setter
+#     def length(self, val):
+#         if Rectangle.check_value(val):
+#             self.__length = val
+#         else:
+#             print("Неверный тип данных")
+#
+#
+#     @staticmethod
+#     def check_value(s):
+#         if isinstance(s, (int, float)):
+#             return True
+#         return False
+#
+#     def square(self):
+#         return self.__breadth * self.__length
+#
+#     def perimeter(self):
+#         return (self.__breadth + self.__length) * 2
+#
+#     def hypotenuse(self):
+#         return round(math.sqrt(self.__breadth ** 2 + self.__length ** 2), 2)
+#
+#     def print_rectangle(self):
+#         # for i in range(self.__length):
+#         #     for j in range(self.__breadth):
+#         #         print('*', end='')
+#         #     print()
+#         print(("*" * self.__breadth + "\n") * self.length)
+#
+#
+# a = 15
+# b = 8
+# obj = Rectangle(a, b)
+# # print("Длина прямоугольника:", obj.length)
+# # print("Ширина прямоугольника:", obj.breadth)
+# obj.length = 3
+# obj.breadth = 9
 # print("Длина прямоугольника:", obj.length)
 # print("Ширина прямоугольника:", obj.breadth)
-obj.length = 3
-obj.breadth = 9
-print("Длина прямоугольника:", obj.length)
-print("Ширина прямоугольника:", obj.breadth)
-print("Площадь прямоугольника:", obj.square())
-print("Периметр прямоугольника:", obj.perimeter())
-print("Гипотенуза прямоугольника:", obj.hypotenuse())
-obj.print_rectangle()
+# print("Площадь прямоугольника:", obj.square())
+# print("Периметр прямоугольника:", obj.perimeter())
+# print("Гипотенуза прямоугольника:", obj.hypotenuse())
+# obj.print_rectangle()
 
 
 # try:
@@ -3928,3 +3931,666 @@ obj.print_rectangle()
     # создать метод нахождения площади фигуры
 
     # проверка на ввод отрицательных значений
+
+
+# @classmethod Устанавливает новое значение в статическом и в динамическом
+
+# class Account:
+#     rate_usd = 0.013  # Статическое # поменяли методом @classmethod на 2
+#     rate_eur = 0.011  #
+#     suffix = "RUB"    #
+#     suffix_usd = "USD"
+#     suffix_eur = "EUR"
+#
+#     def __init__(self, surname, num, percent, value):   # Динамическое
+#         self.surname = surname
+#         self.num = num
+#         self.percent = percent
+#         self.value = value
+#         print(f"Счёт №{self.num} принадлежащий {self.surname} был открыт.")
+#         print("*" * 50)
+#
+#     def __del__(self):
+#         print("*" * 50)
+#         print(f"Счёт №{self.num} принадлежащий {self.surname} был закрыт.")
+#
+#     @staticmethod
+#     def convert(value, rate):
+#         return value * rate
+#
+#     @classmethod  # Устанавливаем новое значение в статическом
+#     def set_usd_rate(cls, rate):
+#         cls.rate_usd = rate
+#
+#     @classmethod
+#     def set_eur_rate(cls, rate):
+#         cls.rate_eur = rate
+#
+#     def convert_to_usd(self):
+#         usd_val = Account.convert(self.value, Account.rate_usd)
+#         print(f"Состояние счёта {usd_val} {Account.suffix_usd}")
+#
+#     def convert_to_eur(self):
+#         eur_val = Account.convert(self.value, Account.rate_eur)
+#         print(f"Состояние счёта {eur_val} {Account.suffix_eur}")
+#
+#     def edit_owner(self, surname):
+#         self.surname = surname
+#
+#     def add_percents(self):
+#         self.value += self.value * self.percent
+#         print("Проценты были успешно начислены")
+#         self.print_balance()
+#
+#     def withdraw_money(self, val):
+#         if val > self.value:
+#             print(f"К сожалению у вас нет {val} {Account.suffix}")
+#         else:
+#             self.value -= val
+#             print(f"{val} {Account.suffix} было успешно снято!")
+#         self.print_balance()
+#
+#     def add_money(self, val):
+#         self.value += val
+#         print(f"{val} {Account.suffix} было успешно добавлено!")
+#         self.print_balance()
+#
+#     def print_balance(self):  # Метод
+#         print(f"Текущий баланс {self.value} {Account.suffix}")
+#
+#     def print_info(self):
+#         print('Информация о счёте:')
+#         print('-' * 20)
+#         print(f"№{self.num}")
+#         print(f"Владелец: {self.surname}")
+#         self.print_balance()
+#         print(f"Проценты: {self.percent:.0%}")  #
+#         print('-' * 20)
+#
+#
+# acc = Account("Долгих", '12345', 0.03, 1000)
+# acc.print_info()
+# acc.convert_to_usd()
+# acc.convert_to_eur()
+# print()
+# Account.set_usd_rate(2)
+# acc.convert_to_usd()
+# Account.set_eur_rate(3)
+# acc.convert_to_eur()
+# print()
+# acc.edit_owner("Дюма")
+# acc.print_info()
+# acc.add_percents()
+# print()
+# acc.withdraw_money(3000)
+# print()
+# acc.withdraw_money(100)
+# print()
+# acc.add_money(5000)
+# print()
+# acc.withdraw_money(3000)
+# print()
+
+# class Account:
+#     rate_usd = 0.013  # 2
+#     rate_eur = 0.011  # 3
+#     suffix = 'RUB'
+#     suffix_usd = "USD"
+#     suffix_eur = "EUR"
+#
+#     def __init__(self, surname, num, percent, value):
+#         self.__num = num
+#         self.__surname = surname
+#         self.__percent = percent
+#         self.__value = value
+#         print(f"Счет №{self.__num} принадлежащий {self.__surname} был открыт.")
+#         print("*" * 50)
+#
+#     def __del__(self):
+#         print("*" * 50)
+#         print(f"Счет №{self.__num} принадлежащий {self.__surname} был закрыт.")
+#
+#     @staticmethod
+#     def convert(value, rate):
+#         return value * rate
+#
+#     @classmethod
+#     def set_usd_rate(cls, rate):
+#         cls.rate_usd = rate
+#
+#     @classmethod
+#     def set_eur_rate(cls, rate):
+#         cls.rate_eur = rate
+#
+#     def convert_to_usd(self):
+#         usd_val = Account.convert(self.__value, Account.rate_usd)
+#         print(f'Состояние счета: {usd_val} {Account.suffix_usd}')
+#
+#     def convert_to_eur(self):
+#         eur_val = Account.convert(self.__value, Account.rate_eur)
+#         print(f'Состояние счета: {eur_val} {Account.suffix_eur}')
+#
+#     def edit_owner(self, surname):
+#         self.__surname = surname
+#
+#     def add_percents(self):
+#         self.__value += self.__value * self.__percent
+#         print("Проценты были успешно начислены")
+#         self.print_balance()
+#
+#     def withdraw_money(self, val):
+#         if val > self.__value:
+#             print(f"К сожалению у вас нет {val} {Account.suffix}")
+#         else:
+#             self.__value -= val
+#             print(f"{val} {Account.suffix} было успешно снято!")
+#         self.print_balance()
+#
+#     def add_money(self, val):
+#         self.__value += val
+#         print(f"{val} {Account.suffix} было успешно добавлено!")
+#         self.print_balance()
+#
+#     def print_balance(self):
+#         print(f"Текущий баланс {self.__value} {Account.suffix}")
+#
+#     def print_info(self):
+#         print('Информация о счете:')
+#         print('-' * 20)
+#         print(f"№{self.__num}")
+#         print(f"Владелец: {self.__surname}")
+#         self.print_balance()
+#         print(f"Проценты: {self.__percent:.0%}")
+#         print('-' * 20)
+#
+#
+# acc = Account("Долгих", '12345', 0.03, 1000)
+# acc.print_info()
+# acc.convert_to_usd()
+# acc.convert_to_eur()
+# print()
+# Account.set_usd_rate(2)
+# acc.convert_to_usd()
+# Account.set_eur_rate(3)
+# acc.convert_to_eur()
+# print()
+# acc.edit_owner("Дюма")
+# acc.print_info()
+# acc.add_percents()
+# print()
+# acc.withdraw_money(3000)
+# print()
+# acc.withdraw_money(100)
+# print()
+# acc.add_money(5000)
+# print()
+# acc.withdraw_money(3000)
+# print()
+
+# class Account:
+#     rate_usd = 0.013  # 2
+#     rate_eur = 0.011  # 3
+#     suffix = 'RUB'
+#     suffix_usd = "USD"
+#     suffix_eur = "EUR"
+#
+#     def __init__(self, surname, num, percent, value):
+#         self.__num = num
+#         self.__surname = surname
+#         self.__percent = percent
+#         self.__value = value
+#         print(f"Счет №{self.__num} принадлежащий {self.__surname} был открыт.")
+#         print("*" * 50)
+#
+#     def __del__(self):
+#         print("*" * 50)
+#         print(f"Счет №{self.__num} принадлежащий {self.__surname} был закрыт.")
+#
+#     def get_surname(self):
+#         return self.__surname
+#
+#     def set_surname(self, val):
+#         self.__surname = val
+#
+#     def get_num(self):
+#         return self.__num
+#
+#     def set_num(self, val2):
+#         self.__num = val2
+#
+#     def get_percent(self):
+#         return self.__percent
+#
+#     def set_percent(self, val3):
+#         self.__percent = val3
+#
+#     def get_value(self):
+#         return self.__value
+#
+#     def set_value(self, val4):
+#         self.__value = val4
+#
+#     @staticmethod
+#     def convert(value, rate):
+#         return value * rate
+#
+#     @classmethod
+#     def set_usd_rate(cls, rate):
+#         cls.rate_usd = rate
+#
+#     @classmethod
+#     def set_eur_rate(cls, rate):
+#         cls.rate_eur = rate
+#
+#     def convert_to_usd(self):
+#         usd_val = Account.convert(self.__value, Account.rate_usd)
+#         print(f'Состояние счета: {usd_val} {Account.suffix_usd}')
+#
+#     def convert_to_eur(self):
+#         eur_val = Account.convert(self.__value, Account.rate_eur)
+#         print(f'Состояние счета: {eur_val} {Account.suffix_eur}')
+#
+#     def edit_owner(self, surname):
+#         self.__surname = surname
+#
+#     def add_percents(self):
+#         self.__value += self.__value * self.__percent
+#         print("Проценты были успешно начислены")
+#         self.print_balance()
+#
+#     def withdraw_money(self, val):
+#         if val > self.__value:
+#             print(f"К сожалению у вас нет {val} {Account.suffix}")
+#         else:
+#             self.__value -= val
+#             print(f"{val} {Account.suffix} было успешно снято!")
+#         self.print_balance()
+#
+#     def add_money(self, val):
+#         self.__value += val
+#         print(f"{val} {Account.suffix} было успешно добавлено!")
+#         self.print_balance()
+#
+#     def print_balance(self):
+#         print(f"Текущий баланс {self.__value} {Account.suffix}")
+#
+#     def print_info(self):
+#         print('Информация о счете:')
+#         print('-' * 20)
+#         print(f"№{self.__num}")
+#         print(f"Владелец: {self.__surname}")
+#         self.print_balance()
+#         print(f"Проценты: {self.__percent:.0%}")
+#         print('-' * 20)
+#
+#
+# acc = Account("Долгих", '12345', 0.03, 1000)
+# acc.print_info()
+# acc.convert_to_usd()
+# acc.convert_to_eur()
+# print()
+# Account.set_usd_rate(2)
+# acc.convert_to_usd()
+# Account.set_eur_rate(3)
+# acc.convert_to_eur()
+# print()
+# acc.edit_owner("Дюма")
+# acc.print_info()
+# acc.add_percents()
+# print()
+# acc.withdraw_money(3000)
+# print()
+# acc.withdraw_money(100)
+# print()
+# acc.add_money(5000)
+# print()
+# acc.withdraw_money(3000)
+# print()
+
+# class Account:
+#     rate_usd = 0.013
+#     rate_eur = 0.011
+#     suffix = 'RUB'
+#     suffix_usd = "USD"
+#     suffix_eur = "EUR"
+#
+#     def __init__(self, surname, num, percent, value):
+#         self.__num = num
+#         self.__surname = surname
+#         self.__percent = percent
+#         self.__value = value
+#         print(f"Счет №{self.__num} принадлежащий {self.__surname} был открыт.")
+#         print("*" * 50)
+#
+#     def __del__(self):
+#         print("*" * 50)
+#         print(f"Счет №{self.__num} принадлежащий {self.__surname} был закрыт.")
+#
+#     @property
+#     def num(self):
+#         return self.__num
+#
+#     @num.setter
+#     def num(self, val1):
+#         self.__num = val1
+#
+#     @property
+#     def surname(self):
+#         return self.__surname
+#
+#     @surname.setter
+#     def surname(self, val2):
+#         self.__surname = val2
+#
+#     @property
+#     def percent(self):
+#         return self.__percent
+#
+#     @percent.setter
+#     def percent(self, val3):
+#         self.__percent = val3
+#
+#     @property
+#     def value(self):
+#         return self.__value
+#
+#     @value.setter
+#     def value(self, val4):
+#         self.__value = val4
+#
+#     @staticmethod
+#     def convert(value, rate):
+#         return value * rate
+#
+#     @classmethod
+#     def set_usd_rate(cls, rate):
+#         cls.rate_usd = rate
+#
+#     @classmethod
+#     def set_eur_rate(cls, rate):
+#         cls.rate_eur = rate
+#
+#     def convert_to_usd(self):
+#         usd_val = Account.convert(self.__value, Account.rate_usd)
+#         print(f'Состояние счета: {usd_val} {Account.suffix_usd}')
+#
+#     def convert_to_eur(self):
+#         eur_val = Account.convert(self.__value, Account.rate_eur)
+#         print(f'Состояние счета: {eur_val} {Account.suffix_eur}')
+#
+#     def edit_owner(self, surname):
+#         self.__surname = surname
+#
+#     def add_percents(self):
+#         self.__value += self.__value * self.__percent
+#         print("Проценты были успешно начислены")
+#         self.print_balance()
+#
+#     def withdraw_money(self, val):
+#         if val > self.__value:
+#             print(f"К сожалению у вас нет {val} {Account.suffix}")
+#         else:
+#             self.__value -= val
+#             print(f"{val} {Account.suffix} было успешно снято!")
+#         self.print_balance()
+#
+#     def add_money(self, val):
+#         self.__value += val
+#         print(f"{val} {Account.suffix} было успешно добавлено!")
+#         self.print_balance()
+#
+#     def print_balance(self):
+#         print(f"Текущий баланс {self.__value} {Account.suffix}")
+#
+#     def print_info(self):
+#         print('Информация о счете:')
+#         print('-' * 20)
+#         print(f"№{self.__num}")
+#         print(f"Владелец: {self.__surname}")
+#         self.print_balance()
+#         print(f"Проценты: {self.__percent:.0%}")
+#         print('-' * 20)
+#
+#
+# acc = Account("Долгих", '12345', 0.03, 1000)
+# acc.print_info()
+# acc.convert_to_usd()
+# acc.convert_to_eur()
+# print()
+# Account.set_usd_rate(2)
+# acc.convert_to_usd()
+# Account.set_eur_rate(3)
+# acc.convert_to_eur()
+# print()
+# acc.edit_owner("Дюма")
+# acc.print_info()
+# acc.add_percents()
+# print()
+# acc.withdraw_money(3000)
+# print()
+# acc.withdraw_money(100)
+# print()
+# acc.add_money(5000)
+# print()
+# acc.withdraw_money(3000)
+# print()
+
+# class Point:
+#     def __init__(self, x, y):
+#         self.__x = x
+#         self.__y = y
+#
+#     def __str__(self):
+#         return f"({self.__x}, {self.__y})"
+#
+#     def is_digit(self):
+#         if isinstance(self.__x, (int, float)) and isinstance(self.__y, (int, float)):
+#             return True
+#         return False
+#
+#     def is_int(self):
+#         if isinstance(self.__x, int) and isinstance(self.__y, int):
+#             return True
+#         return False
+#
+#
+# class Prop:
+#     def __init__(self, sp: Point, ep: Point, color: str = "red", width: int = 1):
+#         self._sp = sp
+#         self._ep = ep
+#         self._color = color
+#         self._width = width
+#
+#     def set_coord(self, sp, ep):
+#         if sp.is_digit() and ep.is_digit():
+#             self._sp = sp
+#             self._ep = ep
+#         else:
+#             print("Координаты должны быть целочисленными")
+#
+#
+# class Line(Prop):
+#     def __init__(self, *args):
+#         super().__init__(*args)
+#
+#     def draw_line(self):
+#         print(f"Рисование линии: {self._sp}, {self._ep}, {self._color}, {self._width}")
+#
+#     def set_coord(self, sp, ep):
+#         if sp.is_int() and ep.is_int():
+#             self._sp = sp
+#             self._ep = ep
+#         else:
+#             print("Координаты должны быть целочисленными")
+#
+#
+# line = Line(Point(1, 2), Point(10, 20), "yellow", 5)
+# line.draw_line()
+# line.set_coord(Point(20.2, 30), Point(100, 200))
+# line.draw_line()
+
+# class Rect:
+#     def __init__(self, width, height):
+#         self.width = width
+#         self.height = height
+#
+#     def show_rect(self):
+#         print(f"Прямоугольник:\nШирина: {self.width}\nВысота: {self.height}")
+#
+#
+# class RectFon(Rect):
+#     def __init__(self, w, h, background):
+#         super().__init__(w, h)
+#         self.fon = background
+#
+#     def show_rect(self):  # Дочерний
+#         super().show_rect()  # Родительский
+#         print("Фон:", self.fon)
+#
+#
+# class RectBorder(Rect):
+#     def __init__(self, w, h, px):
+#         super().__init__(w, h)
+#         self.border = px
+#
+#     def show_rect(self):
+#         super().show_rect()
+#         print("Рамка", self.border)
+#
+#
+# shape1 = RectFon(400, 200, "yellow")
+# shape1.show_rect()
+# print()
+# shape2 = RectFon(600, 300, "1 px solid red")
+# shape2.show_rect()
+
+# class Vector(list):
+#     def __str__(self):
+#         return " ".join(map(str, self))
+#
+#
+# v = Vector([1, 2, 3])
+# print(v)
+# print(type(v))
+#
+# a = [5, 6, 7]
+# print(type(a))
+
+
+# Перегрузка методов
+
+# def func(a, b=None, c=None):
+#     ...
+#
+#
+# func(1, 2, 3)
+# func(1, 2)
+# func(1, c=5)
+
+
+# class Point:
+#     def __init__(self, x, y):
+#         self.__x = x
+#         self.__y = y
+#
+#     def __str__(self):
+#         return f"({self.__x}, {self.__y})"
+#
+#     def is_digit(self):
+#         if isinstance(self.__x, (int, float)) and isinstance(self.__y, (int, float)):
+#             return True
+#         return False
+#
+#     def is_int(self):
+#         if isinstance(self.__x, int) and isinstance(self.__y, int):
+#             return True
+#         return False
+#
+#
+# class Prop:
+#     def __init__(self, sp: Point, ep: Point, color: str = "red", width: int = 1):
+#         self._sp = sp
+#         self._ep = ep
+#         self._color = color
+#         self._width = width
+#
+#     def set_coord(self, sp, ep):
+#         if sp.is_digit() and ep.is_digit():
+#             self._sp = sp
+#             self._ep = ep
+#         else:
+#             print("Координаты должны быть целочисленными")
+#
+#
+# class Line(Prop):
+#     def __init__(self, *args):
+#         super().__init__(*args)
+#
+#     def draw_line(self):
+#         print(f"Рисование линии: {self._sp}, {self._ep}, {self._color}, {self._width}")
+#
+#     def set_coord(self, sp=None, ep=None):
+#         if ep is None:
+#             if sp.is_int():
+#                 self._sp = sp
+#             else:
+#                 print("Координата должны быть целочисленная")
+#         else:
+#             if sp.is_int() and ep.is_int():
+#                 self._sp = sp
+#                 self._ep = ep
+#             else:
+#                 print("Координаты должны быть целочисленными")
+#
+#
+# line = Line(Point(1, 2), Point(10, 20), "yellow", 5)
+# line.draw_line()
+# line.set_coord(Point(20, 30), Point(100, 200))
+# line.draw_line()
+# line.set_coord(Point(-40, -60))
+# line.draw_line()
+#
+# line.set_coord(ep=Point(500, 300))
+# line.draw_line()
+
+class Point:
+    def __init__(self, x, y):
+        self.__x = x
+        self.__y = y
+
+    def __str__(self):
+        return f"({self.__x}, {self.__y})"
+
+    def is_digit(self):
+        if isinstance(self.__x, (int, float)) and isinstance(self.__y, (int, float)):
+            return True
+        return False
+
+    def is_int(self):
+        if isinstance(self.__x, int) and isinstance(self.__y, int):
+            return True
+        return False
+
+
+class Prop:
+    def __init__(self, sp: Point, ep: Point, color: str = "red", width: int = 1):
+        self._sp = sp
+        self._ep = ep
+        self._color = color
+        self._width = width
+
+    def set_coord(self, sp, ep):
+        if sp.is_digit() and ep.is_digit():
+            self._sp = sp
+            self._ep = ep
+        else:
+            print("Координаты должны быть целочисленными")
+
+
+class Line(Prop):
+    def __init__(self, *args):
+        super().__init__(*args)
+
+    def draw_line(self):
+        print(f"Рисование линии: {self._sp}, {self._ep}, {self._color}, {self._width}")
+
