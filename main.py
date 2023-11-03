@@ -5153,41 +5153,285 @@
 #
 # print(Line.__mro__)
 
-class Figure:
-    def __init__(self, color):
-        self.__color = color
+# class Figure:
+#     def __init__(self, color):
+#         self.__color = color
+#
+#     def get_color(self):
+#         return self.__color
+#
+#     def set_color(self, color):
+#         self.__color = color
+#
+#
+# class Rectangle(Figure):
+#
+#     def __init__(self, w, h, color):
+#         self.verify(w)
+#         self.verify(h)
+#         self.__w = w
+#         self.__h = h
+#         super().__init__(color)
+#
+#     def square(self):
+#         return self.__w * self.__h
+#
+#     @staticmethod
+#     def verify(val):
+#         if val < 0:
+#             raise ValueError('Переменная не должна быть отрицательной')
+#
+#     def get_info(self):
+#         print(f'Высота: {self.__h}'
+#               f'\nШирина: {self.__w}'
+#               f'\nЦвет: {self.get_color()}'
+#               f'\nПлощадь: {self.square()}')
+#
+#
+# first = Rectangle(3, 6, 'red')
+# first.set_color('blue')
+# first.get_info()
 
-    def get_color(self):
-        return self.__color
+# Миксины
 
-    def set_color(self, color):
-        self.__color = color
+# class Displayer:
+#     @staticmethod
+#     def display(message):
+#         print(message)
+#
+#
+# class LoggerMixin:
+#     def log(self, message, filename="logfile.txt"):  # 'subclass.txt'
+#         with open(filename, 'a') as fh:
+#             fh.write(message)
+#
+#     def display(self, message):
+#         Displayer.display(message)
+#         self.log(message)
+#
+#
+# class MySubClass(LoggerMixin, Displayer):
+#     def log(self, message, filename=''):
+#         super().log(message, filename='subclass.txt')
+#
+#
+# subclass = MySubClass()
+# subclass.display("Это строка будет печататься и записываться в файл")
+
+# class Goods:
+#     def __init__(self, name, weight, price):
+#         super().__init__()  # Или MixinLog.__init__(self)
+#         print("Init Goods")
+#         self.name = name
+#         self.weight = weight
+#         self.price = price
+#
+#     def print_info(self):
+#         print(f"{self.name}, {self.weight}, {self.price}")
+#
+#
+# class MixinLog:
+#     ID = 0
+#
+#     def __init__(self):
+#         print("Init MixinLog")
+#         MixinLog.ID += 1
+#         self.id = MixinLog.ID
+#
+#     def save_sell_log(self):
+#         print(f"{self.id}: товар был продан в 00:00 часов")
+#
+#
+# class NoteBook(Goods, MixinLog):
+#     pass
+#
+#
+# n = NoteBook("HP", 1.5, 35000)
+# n.print_info()
+# n.save_sell_log()
+# n2 = NoteBook("HP", 1.5, 35000)
+# n2.save_sell_log()
+
+# Перегрузка операторов
+
+# Число секунд в одном дне 24*60*60 =86400
+
+# dz23
+# class Clock:
+#     __DAY = 86400
+#
+#     def __init__(self, sec):
+#         if not isinstance(sec, int):
+#             raise ValueError("Секунды должны быть целым числом")
+#         self.sec = sec % self.__DAY
+#
+#     def get_format_time(self):
+#         s = self.sec % 60
+#         m = (self.sec // 60) % 60
+#         h = (self.sec // 3600) % 24
+#         return f"{Clock.__get_form(h)}:{Clock.__get_form(m)}:{Clock.__get_form(s)}"
+#
+#     @staticmethod
+#     def __get_form(x):
+#         return str(x) if x > 9 else "0" + str(x)
+#
+#     def __add__(self, other):
+#         if not isinstance(other, Clock):
+#             raise ArithmeticError("Правый операнд должен быть типом данных Clock")
+#         return Clock(self.sec + other.sec)
+#
+#     def __eq__(self, other):
+#         if not isinstance(other, Clock):
+#             raise ArithmeticError("Правый операнд должен быть типом данных Clock")
+#         return self.sec == other.sec
+#         # if self.sec == other.sec:
+#         #     return True
+#         # return False
+#
+#     def __ne__(self, other):
+#         return not self.__eq__(other)
+#
+#
+# c1 = Clock(100)
+# c2 = Clock(100)
+# # c4 = Clock(300)
+# print(c1.get_format_time())
+# print(c2.get_format_time())
+# # print(c4.get_format_time())
+# # c3 = c1 + c2 + c4
+# # c1 += c2
+# # print(c1.get_format_time())
+# # if c1 == c2:
+# #     print("Время одинаковое")
+# # else:
+# #     print("Время разное")
+#
+# if c1 != c2:
+#     print("Время одинаковое")
+# else:
+#     print("Время разное")
 
 
-class Rectangle(Figure):
+# from random import choice, randint
+#
+#
+# class Cat:
+#     def __init__(self, name, age, pol):
+#         self.name = name
+#         self.age = age
+#         self.pol = pol
+#
+#     def __str__(self):
+#         if self.pol == "M":
+#             return f"{self.name} is good boy!!!"
+#         elif self.pol == "F":
+#             return f"{self.name} is good girl!!!"
+#         else:
+#             return f"{self.name} is good kitty!!!"
+#
+#     def __repr__(self):
+#         return f"Cat(name='{self.name}', age='{self.age}', pol='{self.pol}')"
+#
+#     def __add__(self, other):
+#         if self.pol != other.pol:
+#             return [Cat("No name", 0, choice(["M", "F"])) for _ in range(randint(1, 5))]
+#         else:
+#             raise TypeError("Types are not supported")
+#
+#
+# cat1 = Cat("Tom", 4, "M")
+# cat2 = Cat("Elsa", 5, "F")
+# cat3 = Cat("Murzik", 5, "M")
+# print(cat1)
+# print(cat2)
+# print(cat1 + cat2)
 
-    def __init__(self, w, h, color):
-        self.verify(w)
-        self.verify(h)
-        self.__w = w
-        self.__h = h
-        super().__init__(color)
+# class Student:
+#     def __init__(self, name, *marks):
+#         self.name = name
+#         self.marks = list(marks)  # [5, 5, 3, 4, 5]
+#
+#     def __getitem__(self, item):
+#         if 0 <= item < len(self.marks):
+#             return self.marks[item]
+#         else:
+#             raise IndexError("Неверный индекс")
+#
+#     def __setitem__(self, key, value):
+#         if not isinstance(key, int) or key < 0:
+#             raise TypeError("Индекс должен быть целым неотрицательным числом")
+#
+#         if key >= len(self.marks):
+#             off = key + 1 - len(self.marks)  # 10 + 1 - 5 = 6
+#             self.marks.extend([None] * off)  # [5, 5, 3, 4, 5, None, None, None, None, None, None]
+#
+#         self.marks[key] = value
+#
+#     def __delitem__(self, key):
+#         if not isinstance(key, int):
+#             raise TypeError("Индекс должен быть целым числом")
+#
+#         del self.marks[key]
+#
+#
+# s1 = Student("Сергей", 5, 5, 3, 4, 5)
+# # print(s1.marks[2])
+# print(s1[2])
+# s1[10] = 4
+# del s1[2]
+# print(s1.marks)
+
+from math import sqrt
+
+
+class Pair:
+    def __init__(self, a, b):
+        self.A = a
+        self.B = b
+
+    def set_a(self, a):
+        self.A = a
+
+    def set_b(self, b):
+        self.B = b
+
+    def sum(self):
+        return self.A + self.B
+
+    def mult(self):
+        return self.A * self.B
+
+
+class RightTriangle(Pair):
+    def __init__(self, a, b):
+        super().__init__(a, b)
+        self.C = self.hypot()
+
+    def hypot(self):
+        hypot = round(sqrt(self.A ** 2 + self.B ** 2), 2)
+        print(f"Гипотенуза АВС: {hypot}")
+        return hypot
+
+    def print_info(self):
+        print(f"Прямоугольный треугольник АВС ({self.A}, {self.B}, {self.C})")
 
     def square(self):
-        return self.__w * self.__h
-
-    @staticmethod
-    def verify(val):
-        if val < 0:
-            raise ValueError('Переменная не должна быть отрицательной')
-
-    def get_info(self):
-        print(f'Высота: {self.__h}'
-              f'\nШирина: {self.__w}'
-              f'\nЦвет: {self.get_color()}'
-              f'\nПлощадь: {self.square()}')
+        s = round(0.5 * self.mult(), 2)
+        print(f"Площадь АВС: {s}")
+        return s
 
 
-first = Rectangle(3, 6, 'red')
-first.set_color('blue')
-first.get_info()
+tr = RightTriangle(5, 8)
+tr.print_info()
+tr.square()
+print()
+print(f"Сумма: {tr.sum()}")
+print(f"Произведение: {tr.mult()}")
+print()
+tr.set_a(10)
+tr.hypot()
+tr.set_b(20)
+tr.hypot()
+print(f"Сумма: {tr.sum()}")
+print(f"Произведение: {tr.mult()}")
+tr.square()
