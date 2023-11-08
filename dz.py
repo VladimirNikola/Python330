@@ -520,57 +520,84 @@
 
 #dz 22
 
-from math import sqrt
+# from math import sqrt
+#
+#
+# class Pair:
+#     def __init__(self, a, b):
+#         self.A = a
+#         self.B = b
+#
+#     def set_a(self, a):
+#         self.A = a
+#
+#     def set_b(self, b):
+#         self.B = b
+#
+#     def sum(self):
+#         return self.A + self.B
+#
+#     def mult(self):
+#         return self.A * self.B
+#
+#
+# class RightTriangle(Pair):
+#     def __init__(self, a, b):
+#         super().__init__(a, b)
+#         self.C = self.hypot()
+#
+#     def hypot(self):
+#         hypot = round(sqrt(self.A ** 2 + self.B ** 2), 2)
+#         print(f"Гипотенуза АВС: {hypot}")
+#         return hypot
+#
+#     def print_info(self):
+#         print(f"Прямоугольный треугольник АВС ({self.A}, {self.B}, {self.C})")
+#
+#     def square(self):
+#         s = round(0.5 * self.mult(), 2)
+#         print(f"Площадь АВС: {s}")
+#         return s
+#
+#
+# tr = RightTriangle(5, 8)
+# tr.print_info()
+# tr.square()
+# print()
+# print(f"Сумма: {tr.sum()}")
+# print(f"Произведение: {tr.mult()}")
+# print()
+# tr.set_a(10)
+# tr.hypot()
+# tr.set_b(20)
+# tr.hypot()
+# print(f"Сумма: {tr.sum()}")
+# print(f"Произведение: {tr.mult()}")
+# tr.square()
 
 
-class Pair:
-    def __init__(self, a, b):
-        self.A = a
-        self.B = b
+# Dz 23
 
-    def set_a(self, a):
-        self.A = a
+class Student:
+    def __init__(self, name):
+        self.name = name
+        self.note = self.NoteBook()
 
-    def set_b(self, b):
-        self.B = b
+    def display(self):
+        print(f"{self.name}", end=' ')
+        self.note.display()
 
-    def sum(self):
-        return self.A + self.B
+    class NoteBook:
+        def __init__(self):
+            self.hp = "HP"
+            self.i7 = "i7"
+            self.memory = "16"
 
-    def mult(self):
-        return self.A * self.B
-
-
-class RightTriangle(Pair):
-    def __init__(self, a, b):
-        super().__init__(a, b)
-        self.C = self.hypot()
-
-    def hypot(self):
-        hypot = round(sqrt(self.A ** 2 + self.B ** 2), 2)
-        print(f"Гипотенуза АВС: {hypot}")
-        return hypot
-
-    def print_info(self):
-        print(f"Прямоугольный треугольник АВС ({self.A}, {self.B}, {self.C})")
-
-    def square(self):
-        s = round(0.5 * self.mult(), 2)
-        print(f"Площадь АВС: {s}")
-        return s
+        def display(self):
+            print(f"=> {self.hp}, {self.i7}, {self.memory}")
 
 
-tr = RightTriangle(5, 8)
-tr.print_info()
-tr.square()
-print()
-print(f"Сумма: {tr.sum()}")
-print(f"Произведение: {tr.mult()}")
-print()
-tr.set_a(10)
-tr.hypot()
-tr.set_b(20)
-tr.hypot()
-print(f"Сумма: {tr.sum()}")
-print(f"Произведение: {tr.mult()}")
-tr.square()
+stud = Student("Roman")
+stud.display()
+stud2 = Student("Vladimir")
+stud2.display()
