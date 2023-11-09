@@ -578,26 +578,184 @@
 
 # Dz 23
 
-class Student:
-    def __init__(self, name):
-        self.name = name
-        self.note = self.NoteBook()
+# class Student:
+#     def __init__(self, name):
+#         self.name = name
+#         self.note = self.NoteBook()
+#
+#     def display(self):
+#         print(f"{self.name}", end=' ')
+#         self.note.display()
+#
+#     class NoteBook:
+#         def __init__(self):
+#             self.hp = "HP"
+#             self.i7 = "i7"
+#             self.memory = "16"
+#
+#         def display(self):
+#             print(f"=> {self.hp}, {self.i7}, {self.memory}")
+#
+#
+# stud = Student("Roman")
+# stud.display()
+# stud2 = Student("Vladimir")
+# stud2.display()
 
-    def display(self):
-        print(f"{self.name}", end=' ')
-        self.note.display()
+# dz 24 - 1
 
-    class NoteBook:
-        def __init__(self):
-            self.hp = "HP"
-            self.i7 = "i7"
-            self.memory = "16"
+class Clock:
+    __DAY = 86400
 
-        def display(self):
-            print(f"=> {self.hp}, {self.i7}, {self.memory}")
+    def __init__(self, sec):
+        if not isinstance(sec, int):
+            raise ValueError("Секунды должны быть целым числом")
+        self.sec = sec % self.__DAY
+
+    def get_format_time(self):
+        s = self.sec % 60
+        m = (self.sec // 60) % 60
+        h = (self.sec // 3600) % 24
+        return f"{Clock.__get_form(h)}:{Clock.__get_form(m)}:{Clock.__get_form(s)}"
+
+    @staticmethod
+    def __get_form(x):
+        return str(x) if x > 9 else "0" + str(x)
+
+    def __add__(self, other):
+        if not isinstance(other, Clock):
+            raise ArithmeticError("Правый операнд должен быть типом данных Clock")
+        return Clock(self.sec + other.sec)
+
+    def __eq__(self, other):
+        if not isinstance(other, Clock):
+            raise ArithmeticError("Правый операнд должен быть типом данных Clock")
+        return self.sec == other.sec
+
+    def __ne__(self, other):
+        return not self.__eq__(other)
+
+    def __gt__(self, other):
+        if not isinstance(other, Clock):
+            raise ArithmeticError("Правый операнд должен быть типом данных Clock")
+        return self.sec > other.sec
+
+    def __ge__(self, other):
+        if not isinstance(other, Clock):
+            raise ArithmeticError("Правый операнд должен быть типом данных Clock")
+        return self.sec >= other.sec
+
+    def __lt__(self, other):
+        return not self.__gt__(other)
+
+    def __le__(self, other):
+        return not self.__ge__(other)
 
 
-stud = Student("Roman")
-stud.display()
-stud2 = Student("Vladimir")
-stud2.display()
+c1 = Clock(600)
+c3 = Clock(700)
+if c3 > c1:
+    print("c3 > c1 True")
+else:
+    print("c3 < c1 False")
+
+if c3 >= c1:
+    print("c3 >= c1 True")
+else:
+    print("c3 <= c1 False")
+
+if c3 < c1:
+    print("c3 > c1 True")
+else:
+    print("c3 < c1 False")
+if c3 <= c1:
+    print("c3 >= c1 True")
+else:
+    print("c3 <= c1 False")
+
+# dz 24 - 2
+
+
+class Clock2:
+    __DAY = 86400
+
+    def __init__(self, sec):
+        if not isinstance(sec, int):
+            raise ValueError("Секунды должны быть целым числом")
+        self.sec = sec % self.__DAY
+
+    def get_format_time(self):
+        s = self.sec % 60
+        m = (self.sec // 60) % 60
+        h = (self.sec // 3600) % 24
+        return f"{Clock2.__get_form(h)}:{Clock2.__get_form(m)}:{Clock2.__get_form(s)}"
+
+    @staticmethod
+    def __get_form(x):
+        return str(x) if x > 9 else "0" + str(x)
+
+    def __add__(self, other):
+        if not isinstance(other, Clock2):
+            raise ArithmeticError("Правый операнд должен быть типом данных Clock")
+        return Clock2(self.sec + other.sec)
+
+    def __sub__(self, other):
+        if not isinstance(other, Clock2):
+            raise ArithmeticError("Правый операнд должен быть типом данных Clock")
+        return Clock2(self.sec - other.sec)
+
+    def __mul__(self, other):
+        if not isinstance(other, Clock2):
+            raise ArithmeticError("Правый операнд должен быть типом данных Clock")
+        return Clock2(self.sec * other.sec)
+
+    def __floordiv__(self, other):
+        if not isinstance(other, Clock2):
+            raise ArithmeticError("Правый операнд должен быть типом данных Clock")
+        return Clock2(self.sec // other.sec)
+
+    def __mod__(self, other):
+        if not isinstance(other, Clock2):
+            raise ArithmeticError("Правый операнд должен быть типом данных Clock")
+        return Clock2(self.sec % other.sec)
+
+    def __isub__(self, other):
+        if not isinstance(other, Clock2):
+            raise ArithmeticError("Правый операнд должен быть типом данных Clock")
+        return Clock2(self.sec - other.sec)
+
+    def __imul__(self, other):
+        if not isinstance(other, Clock2):
+            raise ArithmeticError("Правый операнд должен быть типом данных Clock")
+        return Clock2(self.sec * other.sec)
+
+    def __ifloordiv__(self, other):
+        if not isinstance(other, Clock2):
+            raise ArithmeticError("Правый операнд должен быть типом данных Clock")
+        return Clock2(self.sec // other.sec)
+
+    def __imod__(self, other):
+        if not isinstance(other, Clock2):
+            raise ArithmeticError("Правый операнд должен быть типом данных Clock")
+        return Clock2(self.sec % other.sec)
+
+
+c1 = Clock2(600)
+c2 = Clock2(200)
+print("c1:", c1.get_format_time())
+c3 = c1 - c2
+print("c1 - c2:", c3.get_format_time())
+c4 = c1 * c2
+print("c1 * c2:", c4.get_format_time())
+c5 = c1 // c2
+print("c1 // c2:", c5.get_format_time())
+c6 = c1 % c2
+print("c1 % c2:", c6.get_format_time())
+c1 -= c2
+print("c1 -= c2:", c1.get_format_time())
+c1 *= c2
+print("c1 *= c2:", c1.get_format_time())
+c1 //= c2
+print("c1 //= c2:", c1.get_format_time())
+c1 %= c2
+print("c1 %= c2:", c1.get_format_time())
