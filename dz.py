@@ -12,7 +12,7 @@
 #     if x == 0:
 #         break
 #     func(x)
-
+# import math
 # dz14
 
 # s = """Ежевику для ежат
@@ -518,7 +518,7 @@
 # first.set_color('blue')
 # first.get_info()
 
-#dz 22
+# dz 22
 
 # from math import sqrt
 #
@@ -604,158 +604,299 @@
 
 # dz 24 - 1
 
-class Clock:
-    __DAY = 86400
+# class Clock:
+#     __DAY = 86400
+#
+#     def __init__(self, sec):
+#         if not isinstance(sec, int):
+#             raise ValueError("Секунды должны быть целым числом")
+#         self.sec = sec % self.__DAY
+#
+#     def get_format_time(self):
+#         s = self.sec % 60
+#         m = (self.sec // 60) % 60
+#         h = (self.sec // 3600) % 24
+#         return f"{Clock.__get_form(h)}:{Clock.__get_form(m)}:{Clock.__get_form(s)}"
+#
+#     @staticmethod
+#     def __get_form(x):
+#         return str(x) if x > 9 else "0" + str(x)
+#
+#     def __add__(self, other):
+#         if not isinstance(other, Clock):
+#             raise ArithmeticError("Правый операнд должен быть типом данных Clock")
+#         return Clock(self.sec + other.sec)
+#
+#     def __eq__(self, other):
+#         if not isinstance(other, Clock):
+#             raise ArithmeticError("Правый операнд должен быть типом данных Clock")
+#         return self.sec == other.sec
+#
+#     def __ne__(self, other):
+#         return not self.__eq__(other)
+#
+#     def __gt__(self, other):
+#         if not isinstance(other, Clock):
+#             raise ArithmeticError("Правый операнд должен быть типом данных Clock")
+#         return self.sec > other.sec
+#
+#     def __ge__(self, other):
+#         if not isinstance(other, Clock):
+#             raise ArithmeticError("Правый операнд должен быть типом данных Clock")
+#         return self.sec >= other.sec
+#
+#     def __lt__(self, other):
+#         return not self.__gt__(other)
+#
+#     def __le__(self, other):
+#         return not self.__ge__(other)
+#
+#
+# c1 = Clock(600)
+# c3 = Clock(700)
+# if c3 > c1:
+#     print("c3 > c1 True")
+# else:
+#     print("c3 < c1 False")
+#
+# if c3 >= c1:
+#     print("c3 >= c1 True")
+# else:
+#     print("c3 <= c1 False")
+#
+# if c3 < c1:
+#     print("c3 > c1 True")
+# else:
+#     print("c3 < c1 False")
+# if c3 <= c1:
+#     print("c3 >= c1 True")
+# else:
+#     print("c3 <= c1 False")
+#
+# # dz 24 - 2
+#
+#
+# class Clock2:
+#     __DAY = 86400
+#
+#     def __init__(self, sec):
+#         if not isinstance(sec, int):
+#             raise ValueError("Секунды должны быть целым числом")
+#         self.sec = sec % self.__DAY
+#
+#     def get_format_time(self):
+#         s = self.sec % 60
+#         m = (self.sec // 60) % 60
+#         h = (self.sec // 3600) % 24
+#         return f"{Clock2.__get_form(h)}:{Clock2.__get_form(m)}:{Clock2.__get_form(s)}"
+#
+#     @staticmethod
+#     def __get_form(x):
+#         return str(x) if x > 9 else "0" + str(x)
+#
+#     def __add__(self, other):
+#         if not isinstance(other, Clock2):
+#             raise ArithmeticError("Правый операнд должен быть типом данных Clock")
+#         return Clock2(self.sec + other.sec)
+#
+#     def __sub__(self, other):
+#         if not isinstance(other, Clock2):
+#             raise ArithmeticError("Правый операнд должен быть типом данных Clock")
+#         return Clock2(self.sec - other.sec)
+#
+#     def __mul__(self, other):
+#         if not isinstance(other, Clock2):
+#             raise ArithmeticError("Правый операнд должен быть типом данных Clock")
+#         return Clock2(self.sec * other.sec)
+#
+#     def __floordiv__(self, other):
+#         if not isinstance(other, Clock2):
+#             raise ArithmeticError("Правый операнд должен быть типом данных Clock")
+#         return Clock2(self.sec // other.sec)
+#
+#     def __mod__(self, other):
+#         if not isinstance(other, Clock2):
+#             raise ArithmeticError("Правый операнд должен быть типом данных Clock")
+#         return Clock2(self.sec % other.sec)
+#
+#     def __isub__(self, other):
+#         if not isinstance(other, Clock2):
+#             raise ArithmeticError("Правый операнд должен быть типом данных Clock")
+#         return Clock2(self.sec - other.sec)
+#
+#     def __imul__(self, other):
+#         if not isinstance(other, Clock2):
+#             raise ArithmeticError("Правый операнд должен быть типом данных Clock")
+#         return Clock2(self.sec * other.sec)
+#
+#     def __ifloordiv__(self, other):
+#         if not isinstance(other, Clock2):
+#             raise ArithmeticError("Правый операнд должен быть типом данных Clock")
+#         return Clock2(self.sec // other.sec)
+#
+#     def __imod__(self, other):
+#         if not isinstance(other, Clock2):
+#             raise ArithmeticError("Правый операнд должен быть типом данных Clock")
+#         return Clock2(self.sec % other.sec)
+#
+#
+# c1 = Clock2(600)
+# c2 = Clock2(200)
+# print("c1:", c1.get_format_time())
+# c3 = c1 - c2
+# print("c1 - c2:", c3.get_format_time())
+# c4 = c1 * c2
+# print("c1 * c2:", c4.get_format_time())
+# c5 = c1 // c2
+# print("c1 // c2:", c5.get_format_time())
+# c6 = c1 % c2
+# print("c1 % c2:", c6.get_format_time())
+# c1 -= c2
+# print("c1 -= c2:", c1.get_format_time())
+# c1 *= c2
+# print("c1 *= c2:", c1.get_format_time())
+# c1 //= c2
+# print("c1 //= c2:", c1.get_format_time())
+# c1 %= c2
+# print("c1 %= c2:", c1.get_format_time())
 
-    def __init__(self, sec):
-        if not isinstance(sec, int):
-            raise ValueError("Секунды должны быть целым числом")
-        self.sec = sec % self.__DAY
+# dz 25
 
-    def get_format_time(self):
-        s = self.sec % 60
-        m = (self.sec // 60) % 60
-        h = (self.sec // 3600) % 24
-        return f"{Clock.__get_form(h)}:{Clock.__get_form(m)}:{Clock.__get_form(s)}"
-
-    @staticmethod
-    def __get_form(x):
-        return str(x) if x > 9 else "0" + str(x)
-
-    def __add__(self, other):
-        if not isinstance(other, Clock):
-            raise ArithmeticError("Правый операнд должен быть типом данных Clock")
-        return Clock(self.sec + other.sec)
-
-    def __eq__(self, other):
-        if not isinstance(other, Clock):
-            raise ArithmeticError("Правый операнд должен быть типом данных Clock")
-        return self.sec == other.sec
-
-    def __ne__(self, other):
-        return not self.__eq__(other)
-
-    def __gt__(self, other):
-        if not isinstance(other, Clock):
-            raise ArithmeticError("Правый операнд должен быть типом данных Clock")
-        return self.sec > other.sec
-
-    def __ge__(self, other):
-        if not isinstance(other, Clock):
-            raise ArithmeticError("Правый операнд должен быть типом данных Clock")
-        return self.sec >= other.sec
-
-    def __lt__(self, other):
-        return not self.__gt__(other)
-
-    def __le__(self, other):
-        return not self.__ge__(other)
+from abc import ABC, abstractmethod
 
 
-c1 = Clock(600)
-c3 = Clock(700)
-if c3 > c1:
-    print("c3 > c1 True")
-else:
-    print("c3 < c1 False")
+class Shape(ABC):
+    def __init__(self, color, a):
+        self._color = color
+        self._a = a
 
-if c3 >= c1:
-    print("c3 >= c1 True")
-else:
-    print("c3 <= c1 False")
+    def get_color(self):
+        return self._color
 
-if c3 < c1:
-    print("c3 > c1 True")
-else:
-    print("c3 < c1 False")
-if c3 <= c1:
-    print("c3 >= c1 True")
-else:
-    print("c3 <= c1 False")
+    def set_color(self, color):
+        self._color = color
 
-# dz 24 - 2
+    def get_a(self):
+        return self._a
 
+    def set_a(self, a):
+        self._a = a
 
-class Clock2:
-    __DAY = 86400
+    @abstractmethod
+    def get_perimeter(self):
+        pass
 
-    def __init__(self, sec):
-        if not isinstance(sec, int):
-            raise ValueError("Секунды должны быть целым числом")
-        self.sec = sec % self.__DAY
+    @abstractmethod
+    def get_square(self):
+        pass
 
-    def get_format_time(self):
-        s = self.sec % 60
-        m = (self.sec // 60) % 60
-        h = (self.sec // 3600) % 24
-        return f"{Clock2.__get_form(h)}:{Clock2.__get_form(m)}:{Clock2.__get_form(s)}"
+    @abstractmethod
+    def print_figure(self):
+        pass
 
-    @staticmethod
-    def __get_form(x):
-        return str(x) if x > 9 else "0" + str(x)
-
-    def __add__(self, other):
-        if not isinstance(other, Clock2):
-            raise ArithmeticError("Правый операнд должен быть типом данных Clock")
-        return Clock2(self.sec + other.sec)
-
-    def __sub__(self, other):
-        if not isinstance(other, Clock2):
-            raise ArithmeticError("Правый операнд должен быть типом данных Clock")
-        return Clock2(self.sec - other.sec)
-
-    def __mul__(self, other):
-        if not isinstance(other, Clock2):
-            raise ArithmeticError("Правый операнд должен быть типом данных Clock")
-        return Clock2(self.sec * other.sec)
-
-    def __floordiv__(self, other):
-        if not isinstance(other, Clock2):
-            raise ArithmeticError("Правый операнд должен быть типом данных Clock")
-        return Clock2(self.sec // other.sec)
-
-    def __mod__(self, other):
-        if not isinstance(other, Clock2):
-            raise ArithmeticError("Правый операнд должен быть типом данных Clock")
-        return Clock2(self.sec % other.sec)
-
-    def __isub__(self, other):
-        if not isinstance(other, Clock2):
-            raise ArithmeticError("Правый операнд должен быть типом данных Clock")
-        return Clock2(self.sec - other.sec)
-
-    def __imul__(self, other):
-        if not isinstance(other, Clock2):
-            raise ArithmeticError("Правый операнд должен быть типом данных Clock")
-        return Clock2(self.sec * other.sec)
-
-    def __ifloordiv__(self, other):
-        if not isinstance(other, Clock2):
-            raise ArithmeticError("Правый операнд должен быть типом данных Clock")
-        return Clock2(self.sec // other.sec)
-
-    def __imod__(self, other):
-        if not isinstance(other, Clock2):
-            raise ArithmeticError("Правый операнд должен быть типом данных Clock")
-        return Clock2(self.sec % other.sec)
+    @abstractmethod
+    def get_info(self):
+        pass
 
 
-c1 = Clock2(600)
-c2 = Clock2(200)
-print("c1:", c1.get_format_time())
-c3 = c1 - c2
-print("c1 - c2:", c3.get_format_time())
-c4 = c1 * c2
-print("c1 * c2:", c4.get_format_time())
-c5 = c1 // c2
-print("c1 // c2:", c5.get_format_time())
-c6 = c1 % c2
-print("c1 % c2:", c6.get_format_time())
-c1 -= c2
-print("c1 -= c2:", c1.get_format_time())
-c1 *= c2
-print("c1 *= c2:", c1.get_format_time())
-c1 //= c2
-print("c1 //= c2:", c1.get_format_time())
-c1 %= c2
-print("c1 %= c2:", c1.get_format_time())
+class Square(Shape):
+
+    def get_perimeter(self):
+        return self._a * 4
+
+    def get_square(self):
+        return self._a * self._a
+
+    def print_figure(self):
+        return f'{"*" * self._a}\n' * self._a
+
+    def get_info(self):
+
+        print(f'===Квадрат==='
+              f'\nСторона : {self._a}'
+              f'\nЦвет: {self._color}'
+              f'\nПлощадь: {self.get_square()}'
+              f'\nПериметр: {self.get_perimeter()}'
+              f'\n{self.print_figure()}')
+
+
+class Rectangle(Square):
+    def __init__(self, color, a, b):
+        super().__init__(color, a)
+        self._b = b
+
+    def get_b(self):
+        return self._b
+
+    def set_b(self, b):
+        self._b = b
+
+    def get_perimeter(self):
+        return (self._a + self._b) * 2
+
+    def get_square(self):
+        return self._a * self._b
+
+    def print_figure(self):
+        a = self._a
+        b = self._b
+        if a < b:
+            a, b = b, a
+        return f'{"*" * a}\n' * b
+
+    def get_info(self):
+        print('===Прямоугольник==='
+              f'\nДлина: {self._a}'
+              f'\nШирина: {self._b}'
+              f'\nЦвет: {self._color}'
+              f'\nПлощадь: {self.get_square()}'
+              f'\nПериметр: {self.get_perimeter()}'
+              f'\n{self.print_figure()}')
+
+
+class Triangle(Rectangle):
+    def __init__(self, color, a, b, c):
+        super().__init__(color, a, b)
+        self.__c = c
+
+    def get_c(self):
+        return self.__c
+
+    def set_c(self, c):
+        self.__c = c
+
+    def get_perimeter(self):
+        return self._a + self._b + self.__c
+
+    def get_square(self):
+        p = self.get_perimeter() / 2
+        return round((p * (p - self._a) * (p - self._b) * (p - self.__c)) ** 0.5, 1)
+
+    def print_figure(self):
+        a = round((self._a + self._b) / 2)
+        c = self.__c
+        if c < a:
+            a, c = c, a
+        step = round(c / a)
+        prnt = ''
+        for i1 in range(a):
+            prnt += f'{" " * (step * (a - i1) // 2)}*{"*" * step * i1}\n'
+        return prnt
+
+    def get_info(self):
+        print(f'===Треугольник==='
+              f'\nСторона 1: {self._a}'
+              f'\nСторона 2: {self._b}'
+              f'\nСторона 3: {self.__c}'
+              f'\nЦвет: {self._color}'
+              f'\nПлощадь: {self.get_square()}'
+              f'\nПериметр: {self.get_perimeter()}'
+              f'\n{self.print_figure()}')
+
+
+lst = (Square('red', 3),
+       Rectangle('green', 3, 7),
+       Triangle('yellow', 6, 6, 11))
+
+for i in lst:
+    i.get_info()

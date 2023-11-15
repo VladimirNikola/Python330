@@ -4718,6 +4718,7 @@
 # print("*" * 50)
 # for elem in e:
 #     elem.print_value()
+
 # class Figure:
 #     def __init__(self, color):
 #         self.__color = color
@@ -6176,71 +6177,929 @@
 # c1 %= c2
 # print("c1 %= c2:", c1.get_format_time())
 
-class Clock:
-    __DAY = 86400
+# class Clock:
+#     __DAY = 86400
+#
+#     def __init__(self, sec):
+#         if not isinstance(sec, int):
+#             raise ValueError("Секунды должны быть целым числом")
+#         self.sec = sec % self.__DAY
+#
+#     def get_format_time(self):
+#         s = self.sec % 60
+#         m = (self.sec // 60) % 60
+#         h = (self.sec // 3600) % 24
+#         return f"{Clock.__get_form(h)}:{Clock.__get_form(m)}:{Clock.__get_form(s)}"
+#
+#     @staticmethod
+#     def __get_form(x):
+#         return str(x) if x > 9 else "0" + str(x)
+#
+#     def __add__(self, other):
+#         if not isinstance(other, Clock):
+#             raise ArithmeticError("Правый операнд должен быть типом данных Clock")
+#         return Clock(self.sec + other.sec)
+#
+#     def __eq__(self, other):
+#         if not isinstance(other, Clock):
+#             raise ArithmeticError("Правый операнд должен быть типом данных Clock")
+#         return self.sec == other.sec
+#
+#     def __ne__(self, other):
+#         return not self.__eq__(other)
+#
+#     def __gt__(self, other):
+#         if not isinstance(other, Clock):
+#             raise ArithmeticError("Правый операнд должен быть типом данных Clock")
+#         return self.sec > other.sec
+#
+#     def __ge__(self, other):
+#         if not isinstance(other, Clock):
+#             raise ArithmeticError("Правый операнд должен быть типом данных Clock")
+#         return self.sec >= other.sec
+#
+#     def __lt__(self, other):
+#         return not self.__gt__(other)
+#
+#     def __le__(self, other):
+#         return not self.__ge__(other)
+#
+#
+# c1 = Clock(600)
+# c3 = Clock(700)
+# if c3 > c1:
+#     print("c3 > c1 True")
+# else:
+#     print("c3 < c1 False")
+#
+# if c3 >= c1:
+#     print("c3 >= c1 True")
+# else:
+#     print("c3 <= c1 False")
+#
+# if c3 < c1:
+#     print("c3 > c1 True")
+# else:
+#     print("c3 < c1 False")
+# if c3 <= c1:
+#     print("c3 >= c1 True")
+# else:
+#     print("c3 <= c1 False")
 
-    def __init__(self, sec):
-        if not isinstance(sec, int):
-            raise ValueError("Секунды должны быть целым числом")
-        self.sec = sec % self.__DAY
-
-    def get_format_time(self):
-        s = self.sec % 60
-        m = (self.sec // 60) % 60
-        h = (self.sec // 3600) % 24
-        return f"{Clock.__get_form(h)}:{Clock.__get_form(m)}:{Clock.__get_form(s)}"
-
-    @staticmethod
-    def __get_form(x):
-        return str(x) if x > 9 else "0" + str(x)
-
-    def __add__(self, other):
-        if not isinstance(other, Clock):
-            raise ArithmeticError("Правый операнд должен быть типом данных Clock")
-        return Clock(self.sec + other.sec)
-
-    def __eq__(self, other):
-        if not isinstance(other, Clock):
-            raise ArithmeticError("Правый операнд должен быть типом данных Clock")
-        return self.sec == other.sec
-
-    def __ne__(self, other):
-        return not self.__eq__(other)
-
-    def __gt__(self, other):
-        if not isinstance(other, Clock):
-            raise ArithmeticError("Правый операнд должен быть типом данных Clock")
-        return self.sec > other.sec
-
-    def __ge__(self, other):
-        if not isinstance(other, Clock):
-            raise ArithmeticError("Правый операнд должен быть типом данных Clock")
-        return self.sec >= other.sec
-
-    def __lt__(self, other):
-        return not self.__gt__(other)
-
-    def __le__(self, other):
-        return not self.__ge__(other)
+# class Integer:
+#     @staticmethod
+#     def verify_coord(coord):
+#         if not isinstance(coord, int):
+#             raise TypeError(f"Координата {coord} должна быть числом")
+#
+#     def __set_name__(self, owner, name):
+#         self.name = "_" + name
+#
+#     def __get__(self, instance, owner):
+#         # return instance.__dict__[self.name]
+#         return getattr(instance, self.name)
+#
+#     def __set__(self, instance, value):
+#         Integer.verify_coord(value)
+#         # instance.__dict__[self.name] = value
+#         setattr(instance, self.name, value)
+#
+#
+# class Point3D:
+#     x = Integer()
+#     y = Integer()
+#     z = Integer()
+#
+#     def __init__(self, x, y, z):
+#         self.x = x
+#         self.y = y
+#         self.z = z
+#
+#
+# p1 = Point3D(1, 2, 3)
+# print(p1.__dict__)
+# print(p1.x, p1.y, p1.z)
 
 
-c1 = Clock(600)
-c3 = Clock(700)
-if c3 > c1:
-    print("c3 > c1 True")
-else:
-    print("c3 < c1 False")
+# Метакласс
 
-if c3 >= c1:
-    print("c3 >= c1 True")
-else:
-    print("c3 <= c1 False")
+# a = 5
+# print(type(a))
+# print(type(int))
 
-if c3 < c1:
-    print("c3 > c1 True")
-else:
-    print("c3 < c1 False")
-if c3 <= c1:
-    print("c3 >= c1 True")
-else:
-    print("c3 <= c1 False")
+# class MyList(list):
+#     def get_length(self):
+#         return len(self)
+
+
+# MyList = type(
+#     'MyList',
+#     (list,),
+#     dict(get_length=lambda self: len(self))
+# )
+#
+#
+# lst = MyList()
+# lst.append(5)
+# lst.append(8)
+# lst.append(9)
+# print(lst, lst.get_length())
+
+
+# Создание модулей
+# import math
+# from random import randint
+
+
+# import geometry.rect
+# import geometry.sq
+# import geometry.trian
+
+# from geometry import rect, sq, trian
+
+# import geometry # работать не будет
+
+# from geometry import *
+
+# from geometry import rect, sq, trian
+#
+# if __name__ == '__main__':
+#     r1 = rect.Rectangle(1, 2)
+#     r2 = rect.Rectangle(3, 4)
+#
+#     s1 = sq.Square(10)
+#     s2 = sq.Square(20)
+#
+#     t1 = trian.Triangle(1, 2, 3)
+#     t2 = trian.Triangle(4, 5, 6)
+#     shape = [r1, r2, s1, s2, t1, t2]
+#     for g in shape:
+#         print(g.get_perimetr())
+
+# from car.electrocar import ElectroCar
+#
+#
+# if __name__ == '__main__':
+#     e_car = ElectroCar("Tesla", "T", 2018, 99000, 100)
+#     e_car.show_car()
+#     e_car.description_battery()
+
+
+# Сериализация (упаковка данных) и десириализация (распаковка данных)
+
+# marshal (*.pyc)
+# pickle
+# json
+
+
+# import pickle
+
+# file_name = "basket.txt"
+#
+# shop_list = {
+#     "Фрукты": ['яблоки', 'манго'],
+#     "Овощи": ("морковь", "лук"),
+#     "бюджет": 1000
+# }
+#
+# with open(file_name, "wb") as f:
+#     pickle.dump(shop_list, f)
+#
+# with open(file_name, 'rb') as f:
+#     shop_list_2 = pickle.load(f)
+#
+# print(shop_list_2)
+# print(type(shop_list_2))
+
+# class Text:
+#     num = 35
+#     string = "Привет"
+#     lst = [1, 2, 3]
+#     tpl = (22, 23)
+#     d = {"first": 1, "second": 2}
+#
+#     def __str__(self):
+#         return f"Число {Text.num}\nСтрока: {Text.string}\nСписок: {Text.lst}\nКортеж: {Text.tpl}\nСловарь: {Text.d}"
+#
+#
+# obj = Text()
+#
+# obj1 = pickle.dumps(obj)
+# print(obj1)
+# obj2 = pickle.loads(obj1)
+# print(obj2)
+# print(type(obj2))
+
+
+# class Test2:
+#     def __init__(self):
+#         self.a = 35
+#         self.b = "test"
+#         self.c = lambda x: x * x
+#
+#     def __str__(self):
+#         return f"{self.a} {self.b} {self.c(2)}"
+#
+#     def __getstate__(self):
+#         attr = self.__dict__.copy()
+#         del attr['c']
+#         return attr
+#
+#     def __setstate__(self, state):
+#         self.__dict__ = state
+#         self.c = lambda x: x * x
+#
+#
+# item1 = Test2()
+# item2 = pickle.dumps(item1)
+# item3 = pickle.loads(item2)
+# print(item3.__dict__)
+# print(item3)
+
+# class Figure:
+#
+#     figure_name = "Фигура"
+#     def __init__(self, square, perimeter):
+#         self.square = square
+#         self.perimeter = perimeter
+#
+#     def show_name(self):
+#         print(self.figure_name)
+#
+#     def get_square(self):
+#         print(self.get_square())
+#
+#     def get_perimeter(self):
+#         print(self.get_perimeter())
+#
+#
+# class Circle(Figure):
+#
+#     def __init__(self, r):
+#         self.figure_name = "Круг"
+#         self.square = 3.14 * r * r
+#         self.perimeter = 2 * 3.14 * r
+#
+# class Quad(Figure):
+#
+#     def __init__(self,a,b):
+#         self.figure_name = "Четырехугольник"
+#         self.square = a * b
+#         self.perimeter = 2 * (a+b)
+#
+#
+# class Square(Figure):
+#
+#     def __init__(self, a):
+#         self.figure_name = "Квадрат"
+#         self.square = a * a
+#         self.perimeter = 4 * a
+#
+#
+# class Triangle(Figure):
+#
+#     def __init__(self,a,b,c)
+#         self.figure_name = "Треугольник"
+#         self.square = a * b * c
+#         self.perimeter = a + b + c
+
+# class Figure:
+#     figure_name = 'Фигура'
+#
+#     def __init__(self, figure_name):
+#         self.figure_name = figure_name
+#
+#     def show_name(self):
+#         print(self.figure_name)
+#
+#
+# class Circle(Figure):
+#     def __init__(self, radius):
+#         super().__init__('Круг')
+#         self.radius = radius
+#
+#     def get_square(self):
+#         return (3.14 * self.radius ** 2)
+#
+#     def get_perimeter(self):
+#         return (2 * 3.14 * self.radius)
+#
+#
+# class Quad(Figure):
+#     def __init__(self, a, b):
+#         super().__init__('Четырехугольник')
+#         self.a = a
+#         self.b = b
+#
+#     def get_square(self):
+#         return self.a * self.b
+#
+#     def get_perimeter(self):
+#         return 2 * (self.a + self.b)
+#
+#
+# class Square(Figure):
+#     def __init__(self, a):
+#         super().__init__('Квадрат')
+#         self.a = a
+#
+#     def get_square(self):
+#         return self.a ** 2
+#
+#     def get_perimeter(self):
+#         return 4 * self.a
+#
+#
+# class Triangle(Figure):
+#     def __init__(self, a, b, c):
+#         super().__init__('Треугольник')
+#         self.a = a
+#         self.b = b
+#         self.c = c
+#
+#     def get_square(self):
+#         return self.a * self.b * self.c
+#
+#     def get_perimeter(self):
+#         return self.a + self.b + self.c
+
+# from math import pi
+# from abc import ABC, abstractmethod
+#
+#
+# class Shape(ABC):
+#     @abstractmethod
+#     def area(self):
+#         pass
+#
+#
+# class Square(Shape):
+#     def __init__(self, radius):
+#         self.radius = radius
+#
+#     def area(self):
+#         return pi * self.radius ** 2
+#
+#
+# class Rectangle(Shape):
+#     def __init__(self, width, height):
+#         self.width = width
+#         self.height = height
+#
+#     def area(self):
+#         return self.width * self.height
+#
+#
+# class Triangle(Shape):
+#     def __init__(self, base, height):
+#         self.base = base
+#         self.height = height
+#
+#     def area(self):
+#         return 0.5 * self.base * self.height
+
+
+# from abc import ABC, abstractmethod
+#
+#
+# class Shape(ABC):
+#     def __init__(self, name, color, a):
+#         self._color = color
+#         self._name = name
+#         self._a = a
+#
+#     def get_name(self):
+#         return self._name
+#
+#     def set_name(self, name):
+#         self._name = name
+#
+#     def get_color(self):
+#         return self._color
+#
+#     def set_color(self, color):
+#         self._color = color
+#
+#     def get_a(self):
+#         return self._a
+#
+#     def set_a(self, a):
+#         self._a = a
+#
+#     @abstractmethod
+#     def perimeter(self):
+#         pass
+#
+#     @abstractmethod
+#     def square(self):
+#         pass
+#
+#     @abstractmethod
+#     def print_figure(self):
+#         pass
+#
+#     @abstractmethod
+#     def get_info(self):
+#         pass
+#
+#
+# class Square(Shape):
+#     def perimeter(self):
+#         return self._a * 4
+#
+#     def square(self):
+#         return self._a * self._a
+#
+#     def print_figure(self):
+#         return f'{"*" * self._a}\n' * self._a
+#
+#     def figure(self):
+#         print(f'==={self._name}===\n'
+#               f'Сторона: {self._a}\n'
+#               f'Цвет :{self._color}')
+#
+#     def get_info(self):
+#         self.figure()
+#         print(f'Площадь: {self.square()}\n'
+#               f'Периметр: {self.perimeter()}\n'
+#               f'{self.print_figure()}')
+#
+#
+# class Rectangle(Square):
+#     def __init__(self, name, color, a, b):
+#         super().__init__(name, color, a)
+#         self._b = b
+#
+#     def get_b(self):
+#         return self._b
+#
+#     def set_b(self, b):
+#         self._b = b
+#
+#     def perimeter(self):
+#         return (self._a + self._b) * 2
+#
+#     def square(self):
+#         return self._a * self._b
+#
+#     def figure(self):
+#         print(f'==={self._name}===\n'
+#               f'Длина: {self._a}\n'
+#               f'Ширина: {self._b}\n'
+#               f'Цвет :{self._color}')
+#
+#     def print_figure(self):
+#         a = self._a
+#         b = self._b
+#         if a < b:
+#             a, b = b, a
+#         return f'{"*" * a}\n' * b
+#
+#
+# class Triangle(Rectangle):
+#     def __init__(self, name, color, a, b, c):
+#         super().__init__(name, color, a, b)
+#         self.__c = c
+#
+#     def get_c(self):
+#         return self.__c
+#
+#     def set_c(self, c):
+#         self.__c = c
+#
+#     def perimeter(self):
+#         return self._a + self._b + self.__c
+#
+#     def square(self):
+#         p = self.perimeter() / 2
+#         return round((p * (p - self._a) * (p - self._b) * (p - self.__c)) ** 0.5, 2)
+#
+#     def figure(self):
+#         print(f'==={self._name}===\n'
+#               f'Сторона A: {self._a}\n'
+#               f'Сторона B: {self._b}\n'
+#               f'Сторона C: {self.__c}\n'
+#               f'Цвет :{self._color}')
+#
+#     def print_figure(self):
+#         a = round((self._a + self._b) / 2)
+#         c = self.__c
+#         if c < a:
+#             a, c = c, a
+#         step = round(c / a)
+#         prnt = ''
+#         for i in range(a):
+#             prnt += f'{" " * (step * (a - i) // 2)}*{"*" * step * i}\n'
+#         return prnt
+#
+#
+# lst = (Square('Квадрат', 'red', 3),
+#        Rectangle('Прямоугольник', 'green', 3, 7),
+#        Triangle('Треугольник', 'yellow', 6, 6, 11))
+#
+# for i in lst:
+#     i.get_info()
+
+# from math import sqrt
+#
+#
+# class Shape:
+#     def __init__(self, color):
+#         self.color = color
+#
+#
+# class Square(Shape):
+#     def __init__(self, a):
+#         super().__init__(color="red")
+#         self.a = a
+#
+#     def squar(self):
+#         print("===Квадрат===")
+#         print(f"Сторона:{self.a}")
+#         print(f"Цвет:{self.color}")
+#         print(f"Площадь:{self.a * self.a}")
+#         print(f"Периметр:{self.a + self.a + self.a + self.a}")
+#         print((" * " * self.a + "\n") * self.a)
+#
+#
+# class Rectangle(Shape):
+#     def __init__(self, a, b):
+#         super().__init__(color="green")
+#         self.a = a
+#         self.b = b
+#
+#     def recta(self):
+#         print("===Прямоугольник===")
+#         print(f"Длина:{self.a}")
+#         print(f"Ширина:{self.b}")
+#         print(f"Цвет:{self.color}")
+#         print(f"Площадь:{self.a * self.b}")
+#         print(f"Периметр:{self.a + self.b + self.a + self.b}")
+#         print((" * " * self.b + "\n") * self.a)
+#
+#
+# class Triangle(Shape):
+#     def __init__(self, a, b, c):
+#         super().__init__(color="yellow")
+#         self.a = a
+#         self.b = b
+#         self.c = c
+#
+#     def tria(self):
+#         print("===Треугольник===")
+#         print(f"Сторона a:{self.a}")
+#         print(f"Сторона b:{self.b}")
+#         print(f"Сторона c:{self.c}")
+#         print(f"Цвет:{self.color}")
+#         p = (self.a + self.b + self.c) / 2
+#         d = round(sqrt(p * (p - self.a) * (p - self.b) * (p - self.c)), 2)
+#         print(f"Площадь:", d)
+#         print(f"Периметр:{(self.a + self.b + self.c) / 2}")
+#         for i in range(self.a - 4):
+#             print(' ' * (self.a - i) + '*' * (2 * i - 1))
+#
+#
+# s = Square(3)
+# s.squar()
+# r = Rectangle(3, 7)
+# r.recta()
+# t = Triangle(11, 6, 6)
+# t.tria()
+
+# from abc import ABC, abstractmethod
+# import math
+#
+#
+# class Shape:
+#     def __init__(self, *args, **kwargs):
+#         self.args = args
+#         self.kwrgs = kwargs
+#
+#     @abstractmethod
+#     def perimeter(self):
+#         print(" ")
+#
+#     @abstractmethod
+#     def area(self):
+#         print(" ")
+#
+#     @abstractmethod
+#     def paint_figure(self):
+#         print(" ")
+#
+#
+# class Square:
+#     def __init__(self, arg, color):
+#         self.arg = arg
+#         self.color = color
+#
+#     def area(self):
+#         return self.arg * self.arg
+#
+#     def perimeter(self):
+#         return self.arg * 4
+#
+#     def paint_figure(self):
+#         print((f"{self.color * self.arg}\n") * self.arg)
+#
+#     def print_info(self):
+#         print("===Квадрат===")
+#         print(f"Сторона: {self.arg}")
+#         print(f"Цвет: {self.color}")
+#         print(f"Площадь: {self.area()}")
+#         print(f"Периметр: {self.perimeter()}")
+#         self.paint_figure()
+#
+#
+# class Rectengle:
+#     def __init__(self, width, height, color):
+#         self.width = width
+#         self.height = height
+#         self.color = color
+#
+#     def area(self):
+#         return self.width * self.height
+#
+#     def perimeter(self):
+#         return (self.height + self.width) * 2
+#
+#     def paint_figure(self):
+#         print((f"{self.color * self.width}\n") * self.height)
+#
+#     def print_info(self):
+#         print("===Прямоугольник===")
+#         print(f"Длинна : {self.height}")
+#         print(f"Ширина: {self.width}")
+#         print(f"Цвет: {self.color}")
+#         print(f"Площадь: {self.area()}")
+#         print(f"Периметр: {self.perimeter()}")
+#         self.paint_figure()
+#
+#
+# class Triangle:
+#     def __init__(self, arg_a, arg_b, arg_c, color):
+#         self.arg_a = arg_a
+#         self.arg_b = arg_b
+#         self.arg_c = arg_c
+#         self.color = color
+#
+#     def area(self):
+#         p = (self.arg_a + self.arg_b + self.arg_c) * 0.5
+#         return round((p * (p - self.arg_a) * (p - self.arg_b) * (p - self.arg_c)) ** 0.5, 2)
+#
+#     def perimeter(self):
+#         return self.arg_a + self.arg_b + self.arg_c
+#
+#     def paint_figure(self):
+#         r = 0
+#         for i in range(self.arg_b):
+#             r += 1
+#             print((self.color * (i + r)).center(self.arg_a, " "))
+#
+#     def print_info(self):
+#         print("===Треугольник===")
+#         print(f"Сторона 1 : {self.arg_a}")
+#         print(f"Сторона 2: {self.arg_b}")
+#         print(f"Сторона 3: {self.arg_c}")
+#         print(f"Цвет: {self.color}")
+#         print(f"Площадь: {self.area()}")
+#         print(f"Периметр: {self.perimeter()}")
+#         self.paint_figure()
+#
+#
+# ls = [
+#     Square(3, " + "),
+#     Rectengle(7, 3, " * "),
+#     Triangle(11, 6, 6, "#")
+# ]
+# for cl in ls:
+#     cl.print_info()
+
+# ----------------------
+
+# import json
+#
+# data = {
+#     'name': 'Olga',
+#     "age": 35,
+#     20: None,
+#     True: 1,
+#     'hobbies': ('running', 'sing'),
+#     'children': [
+#         {
+#             'first_name': 'Alice',
+#             'age': 6
+#         }
+#     ]
+#
+# }
+#
+# # with open("data_file.json", 'w') as fw:
+# #     json.dump(data, fw, indent=4)
+#
+# json_string = json.dumps(data)
+# print(json_string)
+# print(type(json_string))
+
+
+# class Student:
+#     def __init__(self, name, *marks):
+#         self.name = name
+#         self.marks = list(marks)
+#
+#     def __str__(self):
+#         # a = ""
+#         # for i in self.marks:
+#         #     a += str(i) + ", "
+#         # return f"Студент: {self.name}: {self.marks}: {a[:-2]}"
+#
+#         # a = ", ".join(map(str, self.marks))
+#         # return f"Студент: {self.name}:{a}"
+#
+#         return f"Студент: {self.name}: {', '.join(map(str, self.marks))}"
+#
+#     def add_mark(self, mark):
+#         self.marks.append(mark)
+#
+#     def delete_mark(self, index):
+#         self.marks.pop(index)
+#
+#     def edit_mark(self, index, new_mark):
+#         self.marks[index] = new_mark
+#
+#     def average_mark(self):
+#         return round(sum(self.marks) / len(self.marks), 2)
+#
+#
+# class Group:
+#     def __init__(self, students):
+#         self.students = students
+#
+#     def __str__(self):
+#         # a = ""
+#         # for i in self.students:
+#         #     a += str(i) + "\n"
+#         # return f"{a}"
+#
+#         return '\n'.join(map(str, self.students))
+#
+#
+# st1 = Student("Bodnya", 5, 4, 3, 4, 5, 3)
+# # print(st1)
+# # st1.add_mark(4)
+# # print(st1)
+# # st1.delete_mark(3)
+# # print(st1)
+# # st1.edit_mark(2, 4)
+# # print(st1)
+# # print(st1.average_mark())
+# st2 = Student("Nikolaenko", 2, 3, 5, 4, 2)
+# st3 = Student("Birukov", 3, 5, 3, 2, 5, 4)
+#
+# sts = [st1, st2]
+# my_group = Group(sts, "ГК Python")
+# # print(my_group)
+# my_group.add
+
+
+# from abc import ABC, abstractmethod
+#
+#
+# class Shape(ABC):
+#     def __init__(self, name, color, a):
+#         self._color = color
+#         self._name = name
+#         self._a = a
+#
+#     def get_name(self):
+#         return self._name
+#
+#     def set_name(self, name):
+#         self._name = name
+#
+#     def get_color(self):
+#         return self._color
+#
+#     def set_color(self, color):
+#         self._color = color
+#
+#     def get_a(self):
+#         return self._a
+#
+#     def set_a(self, a):
+#         self._a = a
+#
+#     @abstractmethod
+#     def perimeter(self):
+#         pass
+#
+#     @abstractmethod
+#     def square(self):
+#         pass
+#
+#     @abstractmethod
+#     def print_figure(self):
+#         pass
+#
+#     @abstractmethod
+#     def get_info(self):
+#         pass
+#
+#
+# class Square(Shape):
+#     def perimeter(self):
+#         return self._a * 4
+#
+#     def square(self):
+#         return self._a * self._a
+#
+#     def print_figure(self):
+#         return f'{"*" * self._a}\n' * self._a
+#
+#     def figure(self):
+#         print(f'==={self._name}===\n'
+#               f'Сторона: {self._a}\n'
+#               f'Цвет :{self._color}')
+#
+#     def get_info(self):
+#         self.figure()
+#         print(f'Площадь: {self.square()}\n'
+#               f'Периметр: {self.perimeter()}\n'
+#               f'{self.print_figure()}')
+#
+#
+# class Rectangle(Square):
+#     def __init__(self, name, color, a, b):
+#         super().__init__(name, color, a)
+#         self._b = b
+#
+#     def get_b(self):
+#         return self._b
+#
+#     def set_b(self, b):
+#         self._b = b
+#
+#     def perimeter(self):
+#         return (self._a + self._b) * 2
+#
+#     def square(self):
+#         return self._a * self._b
+#
+#     def figure(self):
+#         print(f'==={self._name}===\n'
+#               f'Длина: {self._a}\n'
+#               f'Ширина: {self._b}\n'
+#               f'Цвет :{self._color}')
+#
+#     def print_figure(self):
+#         a = self._a
+#         b = self._b
+#         if a < b:
+#             a, b = b, a
+#         return f'{"*" * a}\n' * b
+#
+#
+# class Triangle(Rectangle):
+#     def __init__(self, name, color, a, b, c):
+#         super().__init__(name, color, a, b)
+#         self.__c = c
+#
+#     def get_c(self):
+#         return self.__c
+#
+#     def set_c(self, c):
+#         self.__c = c
+#
+#     def perimeter(self):
+#         return self._a + self._b + self.__c
+#
+#     def square(self):
+#         p = self.perimeter() / 2
+#         return round((p * (p - self._a) * (p - self._b) * (p - self.__c)) ** 0.5, 2)
+#
+#     def figure(self):
+#         print(f'==={self._name}===\n'
+#               f'Сторона A: {self._a}\n'
+#               f'Сторона B: {self._b}\n'
+#               f'Сторона C: {self.__c}\n'
+#               f'Цвет :{self._color}')
+#
+#     def print_figure(self):
+#         a = round((self._a + self._b) / 2)
+#         c = self.__c
+#         if c < a:
+#             a, c = c, a
+#         step = round(c / a)
+#         prnt = ''
+#         for i in range(a):
+#             prnt += f'{" " * (step * (a - i) // 2)}*{"*" * step * i}\n'
+#         return prnt
+#
+#
+# lst = (Square('Квадрат', 'red', 3),
+#        Rectangle('Прямоугольник', 'green', 3, 7),
+#        Triangle('Треугольник', 'yellow', 6, 6, 11))
+#
+# for i in lst:
+#     i.get_info()
+
