@@ -762,141 +762,141 @@
 
 # dz 25
 
-from abc import ABC, abstractmethod
-
-
-class Shape(ABC):
-    def __init__(self, color, a):
-        self._color = color
-        self._a = a
-
-    def get_color(self):
-        return self._color
-
-    def set_color(self, color):
-        self._color = color
-
-    def get_a(self):
-        return self._a
-
-    def set_a(self, a):
-        self._a = a
-
-    @abstractmethod
-    def get_perimeter(self):
-        pass
-
-    @abstractmethod
-    def get_square(self):
-        pass
-
-    @abstractmethod
-    def print_figure(self):
-        pass
-
-    @abstractmethod
-    def get_info(self):
-        pass
-
-
-class Square(Shape):
-
-    def get_perimeter(self):
-        return self._a * 4
-
-    def get_square(self):
-        return self._a * self._a
-
-    def print_figure(self):
-        return f'{"*" * self._a}\n' * self._a
-
-    def get_info(self):
-
-        print(f'===Квадрат==='
-              f'\nСторона : {self._a}'
-              f'\nЦвет: {self._color}'
-              f'\nПлощадь: {self.get_square()}'
-              f'\nПериметр: {self.get_perimeter()}'
-              f'\n{self.print_figure()}')
-
-
-class Rectangle(Square):
-    def __init__(self, color, a, b):
-        super().__init__(color, a)
-        self._b = b
-
-    def get_b(self):
-        return self._b
-
-    def set_b(self, b):
-        self._b = b
-
-    def get_perimeter(self):
-        return (self._a + self._b) * 2
-
-    def get_square(self):
-        return self._a * self._b
-
-    def print_figure(self):
-        a = self._a
-        b = self._b
-        if a < b:
-            a, b = b, a
-        return f'{"*" * a}\n' * b
-
-    def get_info(self):
-        print('===Прямоугольник==='
-              f'\nДлина: {self._a}'
-              f'\nШирина: {self._b}'
-              f'\nЦвет: {self._color}'
-              f'\nПлощадь: {self.get_square()}'
-              f'\nПериметр: {self.get_perimeter()}'
-              f'\n{self.print_figure()}')
-
-
-class Triangle(Rectangle):
-    def __init__(self, color, a, b, c):
-        super().__init__(color, a, b)
-        self.__c = c
-
-    def get_c(self):
-        return self.__c
-
-    def set_c(self, c):
-        self.__c = c
-
-    def get_perimeter(self):
-        return self._a + self._b + self.__c
-
-    def get_square(self):
-        p = self.get_perimeter() / 2
-        return round((p * (p - self._a) * (p - self._b) * (p - self.__c)) ** 0.5, 1)
-
-    def print_figure(self):
-        a = round((self._a + self._b) / 2)
-        c = self.__c
-        if c < a:
-            a, c = c, a
-        step = round(c / a)
-        prnt = ''
-        for i1 in range(a):
-            prnt += f'{" " * (step * (a - i1) // 2)}*{"*" * step * i1}\n'
-        return prnt
-
-    def get_info(self):
-        print(f'===Треугольник==='
-              f'\nСторона 1: {self._a}'
-              f'\nСторона 2: {self._b}'
-              f'\nСторона 3: {self.__c}'
-              f'\nЦвет: {self._color}'
-              f'\nПлощадь: {self.get_square()}'
-              f'\nПериметр: {self.get_perimeter()}'
-              f'\n{self.print_figure()}')
-
-
-lst = (Square('red', 3),
-       Rectangle('green', 3, 7),
-       Triangle('yellow', 6, 6, 11))
-
-for i in lst:
-    i.get_info()
+# from abc import ABC, abstractmethod
+#
+#
+# class Shape(ABC):
+#     def __init__(self, color, a):
+#         self._color = color
+#         self._a = a
+#
+#     def get_color(self):
+#         return self._color
+#
+#     def set_color(self, color):
+#         self._color = color
+#
+#     def get_a(self):
+#         return self._a
+#
+#     def set_a(self, a):
+#         self._a = a
+#
+#     @abstractmethod
+#     def get_perimeter(self):
+#         pass
+#
+#     @abstractmethod
+#     def get_square(self):
+#         pass
+#
+#     @abstractmethod
+#     def print_figure(self):
+#         pass
+#
+#     @abstractmethod
+#     def get_info(self):
+#         pass
+#
+#
+# class Square(Shape):
+#
+#     def get_perimeter(self):
+#         return self._a * 4
+#
+#     def get_square(self):
+#         return self._a * self._a
+#
+#     def print_figure(self):
+#         return f'{"*" * self._a}\n' * self._a
+#
+#     def get_info(self):
+#
+#         print(f'===Квадрат==='
+#               f'\nСторона : {self._a}'
+#               f'\nЦвет: {self._color}'
+#               f'\nПлощадь: {self.get_square()}'
+#               f'\nПериметр: {self.get_perimeter()}'
+#               f'\n{self.print_figure()}')
+#
+#
+# class Rectangle(Square):
+#     def __init__(self, color, a, b):
+#         super().__init__(color, a)
+#         self._b = b
+#
+#     def get_b(self):
+#         return self._b
+#
+#     def set_b(self, b):
+#         self._b = b
+#
+#     def get_perimeter(self):
+#         return (self._a + self._b) * 2
+#
+#     def get_square(self):
+#         return self._a * self._b
+#
+#     def print_figure(self):
+#         a = self._a
+#         b = self._b
+#         if a < b:
+#             a, b = b, a
+#         return f'{"*" * a}\n' * b
+#
+#     def get_info(self):
+#         print('===Прямоугольник==='
+#               f'\nДлина: {self._a}'
+#               f'\nШирина: {self._b}'
+#               f'\nЦвет: {self._color}'
+#               f'\nПлощадь: {self.get_square()}'
+#               f'\nПериметр: {self.get_perimeter()}'
+#               f'\n{self.print_figure()}')
+#
+#
+# class Triangle(Rectangle):
+#     def __init__(self, color, a, b, c):
+#         super().__init__(color, a, b)
+#         self.__c = c
+#
+#     def get_c(self):
+#         return self.__c
+#
+#     def set_c(self, c):
+#         self.__c = c
+#
+#     def get_perimeter(self):
+#         return self._a + self._b + self.__c
+#
+#     def get_square(self):
+#         p = self.get_perimeter() / 2
+#         return round((p * (p - self._a) * (p - self._b) * (p - self.__c)) ** 0.5, 1)
+#
+#     def print_figure(self):
+#         a = round((self._a + self._b) / 2)
+#         c = self.__c
+#         if c < a:
+#             a, c = c, a
+#         step = round(c / a)
+#         prnt = ''
+#         for i1 in range(a):
+#             prnt += f'{" " * (step * (a - i1) // 2)}*{"*" * step * i1}\n'
+#         return prnt
+#
+#     def get_info(self):
+#         print(f'===Треугольник==='
+#               f'\nСторона 1: {self._a}'
+#               f'\nСторона 2: {self._b}'
+#               f'\nСторона 3: {self.__c}'
+#               f'\nЦвет: {self._color}'
+#               f'\nПлощадь: {self.get_square()}'
+#               f'\nПериметр: {self.get_perimeter()}'
+#               f'\n{self.print_figure()}')
+#
+#
+# lst = (Square('red', 3),
+#        Rectangle('green', 3, 7),
+#        Triangle('yellow', 6, 6, 11))
+#
+# for i in lst:
+#     i.get_info()
