@@ -9,6 +9,9 @@
 # import math
 # import shlex
 # import time
+# import json
+import csv
+import re
 
 # a = 4
 # print("a =", id(a))
@@ -1325,7 +1328,7 @@
 #     return x, len(x)
 #
 #
-# print(to_set("я боычная строка"))
+# print(to_set("я обычная строка"))
 # print(to_set([4, 5, 4, 6, 2, 9, 11, 3, 4, 2]))
 
 
@@ -2455,9 +2458,9 @@
 # print(s.count("h", 1, -4)) # count делает подсчет строковых символов
 # print(s.find("l", 4, 19))  # find находит совпадение и выводит число индекса, если он не нашел совпадение то покажет индекс -1
 
-# print(s.find("l"))  # Производит поиск слева на право(индекск)
+# print(s.find("l"))  # Производит поиск слева на право(индекс)
 # print(s.rfind("l"))  # Производит поиск с право на лево(индекс)
-# print(s.index("l"))  # Производит поиск слева на право(индекск)
+# print(s.index("l"))  # Производит поиск слева на право(индекс)
 # print(s.rindex("l")) # Производит поиск с право на лево(индекс)
 
 # text = input("Введите два слова: ")  # 'один два'
@@ -2488,7 +2491,7 @@
 
 # print("                py".lstrip())  # убирает пробельные символы с лево
 # print("py                ".rstrip())  # убирает пробельные символы с право
-# print("       py         ".strip())  # убирает пробельные символы с право и слево
+# print("       py         ".strip())  # убирает пробельные символы с право и слева
 # print('https://www.python.org'.lstrip("/:pths"))  # Удаляет перечень запроса слева
 # print('py.$$$;'.rstrip(';$.'))  # Удаляет перечень запроса с право
 
@@ -2528,7 +2531,7 @@
 # # print(re.findall(reg, s))  # список, содержащий все совпадения
 # # print(re.search(reg, s))  # месторасположение первого совпадения
 # # print(re.search(reg, s).span())  # Получает доступ к кортежу
-# # print(re.search(reg, s).start())  # Начало свопадения
+# # print(re.search(reg, s).start())  # Начало совпадения
 # # print(re.search(reg, s).end())  # Конец совпадения
 # # print(re.search(reg, s).group())  # Находит слово по запросу
 # #
@@ -2753,7 +2756,7 @@
 # if 0 <= in_put < len(read_file):
 #     del read_file[in_put]
 # else:
-#     print("Иднекс введен некорректно!")
+#     print("Индекс введен некорректно!")
 # print(read_file)
 # f.close()
 
@@ -3091,7 +3094,7 @@
 #         self.country = country
 #         self.city = city
 # 
-#     def set_phone(self, phone):  # Устанавливает значент
+#     def set_phone(self, phone):  # Устанавливает значение
 #         self.phone = phone
 # 
 #     def get_phone(self):  # получает значение
@@ -3654,7 +3657,7 @@
 # weight.kg = 41
 # print(f"{weight.kg} кг => {weight.to_pounds()} фунтов")
 
-# Создать класс Rectangle, описывающий прямоугольник. В классе должны быть все необходимые методы, а так же методы вычисления площади, периметра и диагонали, и метод, который рисует прямоуголник.
+# Создать класс Rectangle, описывающий прямоугольник. В классе должны быть все необходимые методы, а так же методы вычисления площади, периметра и диагонали, и метод, который рисует прямоугольник.
 
 # import math
 #
@@ -3856,7 +3859,7 @@
 # print(p1.__dict__)
 
 # Наследование
-# Базовый (родительский, суперкласс)
+# Базовый (родительский, супер класс)
 #          дочерний(класс-наследник, подкласс)
 
 # class Point:
@@ -6313,7 +6316,7 @@
 
 # import geometry.rect
 # import geometry.sq
-# import geometry.trian
+# import geometry.train
 
 # from geometry import rect, sq, trian
 
@@ -6713,7 +6716,7 @@
 #         super().__init__(color="red")
 #         self.a = a
 #
-#     def squar(self):
+#     def square(self):
 #         print("===Квадрат===")
 #         print(f"Сторона:{self.a}")
 #         print(f"Цвет:{self.color}")
@@ -6760,7 +6763,7 @@
 #
 #
 # s = Square(3)
-# s.squar()
+# s.square()
 # r = Rectangle(3, 7)
 # r.recta()
 # t = Triangle(11, 6, 6)
@@ -6877,13 +6880,19 @@
 
 # ----------------------
 
+# dump() - сохраняет данные в открытый файл
+# load() - считывание данных из файла
+
+# dumps() - сохраняет данные в строку
+# loads() - считывает данные из строки
+
 # import json
 #
 # data = {
 #     'name': 'Olga',
 #     "age": 35,
-#     20: None,
-#     True: 1,
+#     '20': None,
+#     'True': 1,
 #     'hobbies': ('running', 'sing'),
 #     'children': [
 #         {
@@ -6897,9 +6906,62 @@
 # # with open("data_file.json", 'w') as fw:
 # #     json.dump(data, fw, indent=4)
 #
-# json_string = json.dumps(data)
+# with open("data_file.json", 'r') as fw:
+#      data1 = json.load(fw)
+#      print(data1)
+
+# json_string = json.dumps(data, sort_keys=True)
 # print(json_string)
 # print(type(json_string))
+# data2 = json.loads(json_string)
+# print(data2)
+# print(type(data2))
+
+# import json
+#
+# x = {
+#     "name": "Виктор"
+# }
+# print(json.dumps(x))
+# print(json.dumps(x, ensure_ascii=False))  # ensure_ascii=False - Кодировка "Виктор"
+
+# import json
+# from random import choice
+#
+#
+# def gen_person():
+#     name = ''
+#     tel = ''
+#
+#     letters = ['a', 'b', 'c', 'd', 'e', 'f', 'g']
+#     nums = ['1', '2', '3', '4', '5', '6', '7', '8', '9', '0']
+#
+#     while len(name) != 7:
+#         name += choice(letters)
+#
+#     while len(tel) != 10:
+#         tel += choice(nums)
+#
+#     person = {
+#         'name': name,
+#         'tel': tel
+#     }
+#     return person
+#
+#
+# def write_json(person_dict):
+#     try:
+#         data = json.load(open('persons.json'))
+#     except FileNotFoundError:
+#         data = []
+#
+#     data.append(person_dict)
+#     with open('persons.json', 'w') as f:
+#         json.dump(data, f, indent=2)
+#
+#
+# for i in range(5):
+#     write_json(gen_person())
 
 
 # class Student:
@@ -6930,10 +6992,19 @@
 #     def average_mark(self):
 #         return round(sum(self.marks) / len(self.marks), 2)
 #
-#
+#     def dump_to_json(self, file_name):
+#           data = {"name": self.name, "marks": self.marks}
+#            with open(file_name, 'w') as f:
+#                json.dump(data, f)
+
+#      def load_from_file(self, file_name):
+#          with open(file_name, 'r') as f:
+#              print(json.load(f))
+
 # class Group:
-#     def __init__(self, students):
+#     def __init__(self, students, gr):
 #         self.students = students
+#           self.group = gr
 #
 #     def __str__(self):
 #         # a = ""
@@ -6941,10 +7012,23 @@
 #         #     a += str(i) + "\n"
 #         # return f"{a}"
 #
-#         return '\n'.join(map(str, self.students))
-#
+#         return "\nГруппа:" + self.group + "\n" + '\n'.join(map(str, self.students))
+
+#       def add_student(self, student):
+#           self.student.append(student)
+
+#       def remove_student(self, index):
+#            return self.student.pop(index)
+
+#        @staticmethod
+#        def change_group(group1, group2, index):
+#            return group2.add_student(group1.remove_student(index))
+
 #
 # st1 = Student("Bodnya", 5, 4, 3, 4, 5, 3)
+# st1.dump_to_json("st1.json")
+# st1.load_from_file("st1.json")
+
 # # print(st1)
 # # st1.add_mark(4)
 # # print(st1)
@@ -6959,7 +7043,19 @@
 # sts = [st1, st2]
 # my_group = Group(sts, "ГК Python")
 # # print(my_group)
-# my_group.add
+# my_group.add_student(st3)
+# print(my_group)
+# my_group.remove_student(1)
+# print(my_group)
+
+# group22 = [st2]
+# my_group2 = Group(group22, "ГК Web")
+# print(my_group2)
+
+# Group.change_group(my_group, my_group2, 0)
+
+# print(my_group)
+# print(my_group2)
 
 
 # from abc import ABC, abstractmethod
@@ -7102,4 +7198,309 @@
 #
 # for i in lst:
 #     i.get_info()
+
+#  https://jsonplaceholder.typicode.com/
+
+# import requests
+# import json
+#
+# response = requests.get("https://jsonplaceholder.typicode.com/todos")
+# todos = json.loads(response.text)
+#
+# todos_by_user = {}  # {"1": 12, "2": 1}
+#
+# for todo in todos:
+#     if todo["completed"]:
+#         try:
+#             todos_by_user[todo["userId"]] += 1  # todos_by_user[2] = todos_by_user[1] + 1
+#         except KeyError:
+#             todos_by_user[todo["userId"]] = 1  # todos_by_user[1] = 1
+# print(todos_by_user)  # {1: 11, 2: 8, 3: 7, 4: 6, 5: 12, 6: 6, 7: 9, 8: 11, 9: 8, 10: 12}
+#
+# top_users = sorted(todos_by_user.items(), key=lambda x: x[1], reverse=True)
+# print(top_users)  # [(5, 12), (10, 12), (1, 11), (8, 11), (7, 9), (2, 8), (9, 8), (3, 7), (4, 6), (6, 6)]
+#
+# max_complete = top_users[0][1]
+# print(max_complete)  # 12
+#
+# users = []
+# for user, num_complete in top_users:
+#     if num_complete < max_complete:  # 12 < 12
+#         break
+#     users.append(str(user))
+# print(users)  # [5, 10]
+# # users = ["10"]
+#
+# max_users = " and ".join(users)
+# print(max_users)
+#
+# s = "s" if len(users) > 1 else ""
+# print(f"User{s} {max_users} completed {max_complete} TODOS")
+#
+#
+# def keep(td):
+#     is_complete = td["completed"]
+#     has_max_count = str(td["userId"]) in users
+#     return is_complete and has_max_count
+#
+#
+# with open("filter_max_completed.json", "w") as f:
+#     filter_todos = list(filter(keep, todos))
+#     json.dump(filter_todos, f, indent=2)
+
+# CSV (Comma Separated Values)
+
+# import csv
+#
+# with open("data.csv") as r_file:
+#     file_reader = csv.reader(r_file, delimiter=",")
+#     count = 0
+#     for row in file_reader:
+#         if count == 0:
+#             print(f"Файл содержит столбцы: {', '.join(row)}")
+#         else:
+#             print(f"\t{row[0]} - {row[1]}. Родился в {row[2]} году.")
+#         count += 1
+#     print(f"Всего в файле {count} строки.")
+
+# import csv
+
+# with open("data.csv", encoding="utf-8") as r_file:
+#     fields = ['Имя', "Профессия", "Год рождения"]
+#     file_reader = csv.DictReader(r_file, delimiter=";", fieldnames=fields)
+#     count = 0
+#     for row in file_reader:
+#         # print(row)
+#         if count == 0:
+#             print(f"Файл содержит столбцы: {', '.join(row)}")
+#
+#         print(f"\t{row['Имя']} - {row['Профессия']}. Родился в {row['Год рождения']} году.")
+#         count += 1
+#     print(f"Всего в файле {count} строки.")
+
+# import csv
+#
+# with open("student.csv", 'w') as f:
+#     writer = csv.writer(f, delimiter=";", lineterminator="\r")
+#     writer.writerow(["Имя", "Класс", "Возраст"])
+#     writer.writerow(["Женя", "9", "15"])
+#     writer.writerow(["Саша", "5", "12"])
+#     writer.writerow(["Маша", "1", "18"])
+
+
+# import csv
+#
+# data = [['hostname', 'vendor', 'model', 'location'],
+#         ['sw1', 'Cisco', '3750', 'London, Best str'],
+#         ['sw2', 'Cisco', '3850', 'Liverpool, Better str'],
+#         ['sw3', 'Cisco', '3650', 'Liverpool, Better str'],
+#         ['sw4', 'Cisco', '3650', 'London, Best str']]
+#
+# with open("sw_data.csv", 'w') as f:
+#     writer = csv.writer(f, delimiter=";", lineterminator="\r")
+#     # for row in data:
+#     #     writer.writerow(row)
+#     writer.writerows(data)
+#
+# with open("sw_data.csv") as f:
+#     print(f.read())
+
+# import csv
+#
+# with open("student1.csv", 'w') as f:
+#     names = ["Имя", "Возраст"]
+#     file_writer = csv.DictWriter(f, delimiter=";", lineterminator="\r", fieldnames=names)
+#     file_writer.writeheader()
+#     file_writer.writerow({"Имя": "Женя", "Возраст": 6})
+#     file_writer.writerow({"Имя": "Маша", "Возраст": 15})
+#     file_writer.writerow({"Имя": "Вова", "Возраст": 14})
+
+# import csv
+#
+# data = [{
+#     'hostname': 'sw1',
+#     'location': 'London',
+#     'model': '3750',
+#     'vendor': 'Cisco'
+# }, {
+#     'hostname': 'sw2',
+#     'location': 'Liverpool',
+#     'model': '3850',
+#     'vendor': 'Cisco'
+# }, {
+#     'hostname': 'sw3',
+#     'location': 'Liverpool',
+#     'model': '3650',
+#     'vendor': 'Cisco'
+# }, {
+#     'hostname': 'sw4',
+#     'location': 'London',
+#     'model': '3650',
+#     'vendor': 'Cisco'
+# }]
+#
+# with open('dict.csv', 'w') as f:
+#     writer = csv.DictWriter(f, delimiter=";", lineterminator="\r", fieldnames=data[0].keys())
+#     writer.writeheader()
+#     for d in data:
+#         writer.writerow(d)
+
+# import csv
+# import requests
+# import json
+#
+# response = requests.get('https://jsonplaceholder.typicode.com/todos')
+# # print(response.text)
+#
+# todos = json.loads(response.text)
+# # for i in todos:
+# #     print(i)
+#
+# with open('todos.csv', 'w') as f:
+#     writer = csv.DictWriter(f, todos[0].keys(), delimiter=';', lineterminator='\r', )
+#     writer.writeheader()
+#     for i in todos:
+#         writer.writerow(i)
+
+# Парсинг
+
+# from bs4 import BeautifulSoup
+
+# f = open('index.html', encoding="utf-8").read()
+# soup = BeautifulSoup(f, "html.parser")
+# row = soup.find("div", class_="name") # .text  # - (или string)
+# row = soup.find_all("div", {"class": "name"})
+# row = soup.find_all("div", class_="row")[1].find("div", class_="links")
+# row = soup.find_all("div", {"data-set": "salary"})
+# row = soup.find("div", id="whois")
+# row = soup.find("div", string="Alena").parent.parent
+# row = soup.find("div", string="Alena").find_parent(class_="row")
+# row = soup.find("div", id="whois3").find_next_sibling()
+# row = soup.find("div", id="whois3").find_previous_sibling()
+# print(row)
+
+
+# def get_copywriter(tag):
+#     whois = tag.find("div", class_="whois").text
+#     two = tag.find("div", class_="python").text
+#     if "Copywriter" == whois and "Copywriter" == two:
+#         return tag
+#     return None
+#
+#
+# f = open('index.html', encoding="utf-8").read()
+# soup = BeautifulSoup(f, "html.parser")
+# copywriter = []
+# row = soup.find_all("div", class_="row")
+# for i in row:
+#     cw = get_copywriter(i)
+#     if cw:
+#         copywriter.append(cw)
+#
+# print(copywriter)
+
+# import re
+#
+#
+# def get_salary(s):
+#     pattern = r"\d+"
+#     # res = re.findall(pattern, s)[0]  # 1 вариант
+#     res = re.search(pattern, s).group()  # 2 вариант
+#     print(res)
+#
+#
+# f = open('index.html', encoding="utf-8").read()
+# soup = BeautifulSoup(f, "html.parser")
+# salary = soup.find_all("div", {"data-set": "salary"})
+#
+# for i in salary:
+#     get_salary(i.text)
+
+# import requests
+
+# r = requests.get("https://ru.wordpress.org/")
+# print(r.status_code)
+# print(r.headers)
+# print(r.headers['Content-Type'])
+# print(r.headers['Content-Type'])
+# print(r.content)
+# print(type(r.text))
+# print(r.text)
+
+# import requests
+# from bs4 import BeautifulSoup
+#
+#
+# def get_html(url):
+#     r = requests.get(url)
+#     return r.text
+#
+#
+# def get_data(html):
+#     soup = BeautifulSoup(html, "lxml")
+#     p1 = soup.find("header", id="masthead").find("p", class_="site-title").text
+#     return p1
+#
+#
+# def main():
+#     url = "https://ru.wordpress.org/"
+#     print(get_data(get_html(url)))
+#
+#
+# if __name__ == '__main__':
+#     main()
+
+
+import requests
+from bs4 import BeautifulSoup
+
+
+def get_html(url):
+    r = requests.get(url)
+    return r.text
+
+
+def refined(s):
+    return re.sub(r"\D+", "", s)
+
+
+def write_csv(data):
+    with open("plugin.csv", "a") as f:
+        writer = csv.writer(f, lineterminator='\r', delimiter=";")
+        writer.writerow((data['name'], data['url'], data['rating']))
+
+
+def get_data(html):
+    soup = BeautifulSoup(html, "lxml")
+    s = soup.find(id="main").find_all("section", class_="plugin-section")[-1]
+    plugins = s.find_all("article", class_="plugin-card")
+
+    for plugin in plugins:
+        name = plugin.find("h3").text
+        # url = plugin.find("h3").find("a").get("href")
+        url = plugin.find("h3").find("a")["href"]
+        rating = plugin.find("span", class_="rating-count").find("a").text
+        r = refined(rating)
+
+        data = {'name': name, "url": url, "rating": r}
+        write_csv(data)
+
+
+def main():
+    url = "https://ru.wordpress.org/plugins/"
+    get_data(get_html(url))
+
+
+if __name__ == '__main__':
+    main()
+
+
+
+
+
+
+
+
+
+
 
