@@ -903,42 +903,50 @@
 
 # dz 27
 
-import json
-from random import choice
+# import json
+# from random import choice
+#
+#
+# def gen_person():
+#     name = ''
+#     tel = ''
+#
+#     letters = ['a', 'b', 'c', 'd', 'e', 'f', 'g']
+#     nums = ['1', '2', '3', '4', '5', '6', '7', '8', '9', '0']
+#
+#     while len(name) != 7:
+#         name += choice(letters)
+#
+#     while len(tel) != 10:
+#         tel += choice(nums)
+#
+#     person = {
+#             'name': name,
+#             'tel': tel
+#     }
+#     return person, tel
+#
+#
+# def write_json(person_dict, num):
+#     try:
+#         data = json.load(open('persons.json'))
+#     except FileNotFoundError:
+#         data = {}
+#
+#     data[num] = person_dict
+#     with open('persons.json', 'w') as f:
+#         json.dump(data, f, indent=2)
+#
+#
+# for i in range(5):
+#     write_json(gen_person()[0], gen_person()[1])
 
+# dz 28
 
-def gen_person():
-    name = ''
-    tel = ''
+import csv
 
-    letters = ['a', 'b', 'c', 'd', 'e', 'f', 'g']
-    nums = ['1', '2', '3', '4', '5', '6', '7', '8', '9', '0']
-
-    while len(name) != 7:
-        name += choice(letters)
-
-    while len(tel) != 10:
-        tel += choice(nums)
-
-    person = {
-            'name': name,
-            'tel': tel
-    }
-    return person, tel
-
-
-def write_json(person_dict, num):
-    try:
-        data = json.load(open('persons.json'))
-    except FileNotFoundError:
-        data = {}
-
-    data[num] = person_dict
-    with open('persons.json', 'w') as f:
-        json.dump(data, f, indent=2)
-
-
-for i in range(5):
-    write_json(gen_person()[0], gen_person()[1])
-
+with open("data2.csv") as r_file:
+    file_reader = csv.reader(r_file, delimiter=';')
+    for row in file_reader:
+        print(row)
 

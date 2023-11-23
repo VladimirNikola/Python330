@@ -10,8 +10,8 @@
 # import shlex
 # import time
 # import json
-import csv
-import re
+# import csv
+# import re
 
 # a = 4
 # print("a =", id(a))
@@ -7201,18 +7201,19 @@ import re
 
 #  https://jsonplaceholder.typicode.com/
 
-# import requests
+# import requests  # он дает получить доступ к данным которые находятся в интернете
 # import json
 #
 # response = requests.get("https://jsonplaceholder.typicode.com/todos")
 # todos = json.loads(response.text)
+# # loads() - считывает данные из строки
 #
 # todos_by_user = {}  # {"1": 12, "2": 1}
 #
 # for todo in todos:
 #     if todo["completed"]:
 #         try:
-#             todos_by_user[todo["userId"]] += 1  # todos_by_user[2] = todos_by_user[1] + 1
+#             todos_by_user[todo["userId"]] += 1   # todos_by_user[2] = todos_by_user[1] + 1
 #         except KeyError:
 #             todos_by_user[todo["userId"]] = 1  # todos_by_user[1] = 1
 # print(todos_by_user)  # {1: 11, 2: 8, 3: 7, 4: 6, 5: 12, 6: 6, 7: 9, 8: 11, 9: 8, 10: 12}
@@ -7248,7 +7249,7 @@ import re
 #     filter_todos = list(filter(keep, todos))
 #     json.dump(filter_todos, f, indent=2)
 
-# CSV (Comma Separated Values)
+# CSV (Comma Separated Values) - переменные разделенные запятыми
 
 # import csv
 #
@@ -7451,56 +7452,46 @@ import re
 #     main()
 
 
-import requests
-from bs4 import BeautifulSoup
-
-
-def get_html(url):
-    r = requests.get(url)
-    return r.text
-
-
-def refined(s):
-    return re.sub(r"\D+", "", s)
-
-
-def write_csv(data):
-    with open("plugin.csv", "a") as f:
-        writer = csv.writer(f, lineterminator='\r', delimiter=";")
-        writer.writerow((data['name'], data['url'], data['rating']))
-
-
-def get_data(html):
-    soup = BeautifulSoup(html, "lxml")
-    s = soup.find(id="main").find_all("section", class_="plugin-section")[-1]
-    plugins = s.find_all("article", class_="plugin-card")
-
-    for plugin in plugins:
-        name = plugin.find("h3").text
-        # url = plugin.find("h3").find("a").get("href")
-        url = plugin.find("h3").find("a")["href"]
-        rating = plugin.find("span", class_="rating-count").find("a").text
-        r = refined(rating)
-
-        data = {'name': name, "url": url, "rating": r}
-        write_csv(data)
-
-
-def main():
-    url = "https://ru.wordpress.org/plugins/"
-    get_data(get_html(url))
-
-
-if __name__ == '__main__':
-    main()
-
-
-
-
-
-
-
-
-
-
+# import requests
+# from bs4 import BeautifulSoup
+#
+#
+# def get_html(url):
+#     r = requests.get(url)
+#     return r.text
+#
+#
+# def refined(s):
+#     return re.sub(r"\D+", "", s)
+#
+#
+# def write_csv(data):
+#     with open("plugin.csv", "a") as f:
+#         writer = csv.writer(f, lineterminator='\r', delimiter=";")
+#         writer.writerow((data['name'], data['url'], data['rating']))
+#
+#
+# def get_data(html):
+#     soup = BeautifulSoup(html, "lxml")
+#     s = soup.find(id="main").find_all("section", class_="plugin-section")[-1]
+#     plugins = s.find_all("article", class_="plugin-card")
+#
+#     for plugin in plugins:
+#         name = plugin.find("h3").text
+#         # url = plugin.find("h3").find("a").get("href")
+#         url = plugin.find("h3").find("a")["href"]
+#         rating = plugin.find("span", class_="rating-count").find("a").text
+#         r = refined(rating)
+#
+#         data = {'name': name, "url": url, "rating": r}
+#         write_csv(data)
+#
+#
+# def main():
+#     url = "https://ru.wordpress.org/plugins/"
+#     get_data(get_html(url))
+#
+#
+# if __name__ == '__main__':
+#     main()
 
