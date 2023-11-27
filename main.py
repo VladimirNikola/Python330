@@ -12,6 +12,7 @@
 # import json
 # import csv
 # import re
+import csv
 
 # a = 4
 # print("a =", id(a))
@@ -7249,6 +7250,24 @@
 #     filter_todos = list(filter(keep, todos))
 #     json.dump(filter_todos, f, indent=2)
 
+# dz 28 - 2
+#
+# import requests
+# import json
+#
+# response = requests.get("https://jsonplaceholder.typicode.com/photos")
+# album = json.loads(response.text)
+#
+# albums = []
+# for i in album:
+#     if i['albumId'] % 2 == 0:
+#         albums.append(i)
+#
+# # print(albums)
+#
+# with open("album.json", "w") as f:
+#     json.dump(albums, f, indent=2)
+
 # CSV (Comma Separated Values) - переменные разделенные запятыми
 
 # import csv
@@ -7495,3 +7514,79 @@
 # if __name__ == '__main__':
 #     main()
 
+# import csv
+# import requests
+# from bs4 import BeautifulSoup
+#
+#
+# def get_html(url):
+#     r = requests.get(url)
+#     return r.text
+#
+#
+# def refine_cy(s):
+#     return s.split()[-1]
+#
+#
+# def write_csv(data):
+#     with open("plugin1.csv", "a", encoding="utf-8-sig") as f:
+#         writer = csv.writer(f, lineterminator='\r', delimiter=";")
+#         writer.writerow((data['name'], data['snippet'], data['active'], data['test_cy']))
+#
+#
+# def get_data(html):
+#     soup = BeautifulSoup(html, "lxml")
+#     p1 = soup.find_all("article", class_="plugin-card")
+#     for el in p1:
+#         try:
+#             name = el.find("h3").text
+#         except AttributeError:
+#             name = ''
+#         try:
+#             snippet = el.find("div", class_="entry-excerpt").text.strip()
+#         except AttributeError:
+#             snippet = ""
+#         try:
+#             active = el.find("span", class_="active-installs").text.strip()
+#         except AttributeError:
+#             active = ""
+#         try:
+#             test = el.find("span", class_="tested-with").text.strip()
+#             test_cy = refine_cy(test)
+#         except AttributeError:
+#             test_cy = ""
+#         data = {
+#             'name': name,
+#             'snippet': snippet,
+#             'active': active,
+#             'test_cy': test_cy
+#         }
+#         write_csv(data)
+#
+#
+# def main():
+#     for i in range(15, 50):
+#         url = f"https://ru.wordpress.org/plugins/browse/popular/page/{i}/"
+#         get_data(get_html(url))
+#
+#
+# if __name__ == '__main__':
+#     main()
+
+# from parsers import Parser
+#
+#
+# def main():
+#     pars = Parser("https://www.ixbt.com/live/index/news/", "news.txt")
+#     pars.run()
+#
+#
+# if __name__ == '__main__':
+#     main()
+
+# dz 30, 17:04 23:11:2023
+
+# MVC
+# Model (модель)
+# View (вид или представление)
+# Controller (Контроллер)

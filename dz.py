@@ -14,6 +14,7 @@
 #     func(x)
 # import math
 # dz14
+import csv
 
 # s = """Ежевику для ежат
 # Принесли два ежа.
@@ -943,10 +944,46 @@
 
 # dz 28
 
+# import csv
+#
+# with open("data2.csv") as r_file:
+#     file_reader = csv.reader(r_file, delimiter=';')
+#     for row in file_reader:
+#         print(row)
+
+# dz 29
+
 import csv
+import requests
+from bs4 import BeautifulSoup
 
-with open("data2.csv") as r_file:
-    file_reader = csv.reader(r_file, delimiter=';')
-    for row in file_reader:
-        print(row)
 
+def get_html(url):
+    r = requests.get(url)
+    return r.text
+
+
+def write_csv(data):
+    with open("dz29.csv", 'w') as f:
+        writer = csv.writer(f, lineterminator='\r', delimiter=';')
+        writer.writerow((data['name']))
+
+
+def get_data(html):
+    soup = BeautifulSoup(html, "lxml")
+    name = soup.find(id='post-10463').find('h1', class_='title-detail')
+
+    for i in name:
+        print(i.text)
+
+    data = {"name": name}
+    write_csv(data)
+
+
+def main():
+    url = "https://d23store.ru/10-samyh-populyarnyh-personazhej-garri-pottera-kotorye-voplotilis-v-vyazanyh-igrushkah-nashego-magazina-ruchnoj-raboty/"
+    get_data(get_html(url))
+
+
+if __name__ == '__main__':
+    main()
