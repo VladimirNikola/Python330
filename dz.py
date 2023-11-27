@@ -14,7 +14,6 @@
 #     func(x)
 # import math
 # dz14
-import csv
 
 # s = """Ежевику для ежат
 # Принесли два ежа.
