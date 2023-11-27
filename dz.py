@@ -964,7 +964,7 @@ def get_html(url):
 
 def write_csv(data):
     with open("dz29.csv", 'w') as f:
-        writer = csv.writer(f, lineterminator='\r', delimiter=';')
+        writer = csv.writer(f, delimiter=';')
         writer.writerow((data['name']))
 
 
