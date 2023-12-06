@@ -6357,7 +6357,7 @@
 
 
 # import pickle
-
+#
 # file_name = "basket.txt"
 #
 # shop_list = {
@@ -7635,7 +7635,7 @@
 #
 #
 # def run():
-#     server_socket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+#     server_socket = socket.socket(socket.AF_INET, socket.SOCK_STREAM) # - для установки соединения интернет
 #     server_socket.bind(('127.0.0.1', 5000))  # вписать в адресную строку браузера - 127.0.0.1:5000
 #     server_socket.listen()
 #
@@ -7653,7 +7653,7 @@
 #     run()
 
 
-# import sqlite3
+import sqlite3
 
 # con = sqlite3.connect("profile.db")
 # cur = con.cursor()
@@ -7664,18 +7664,16 @@
 # con.close()
 
 
-# with sqlite3.connect("profile.db") as con:
-#     cur = con.cursor()
-#     # cur.execute("""CREATE TABLE IF NOT EXISTS users(
-#     # id INTEGER PRIMARY KEY AUTOINCREMENT,
-#     # name TEXT NOT NULL,
-#     # summa REAL,
-#     # date TEXT
-#     # )""")
-#     cur.execute("DROP TABLE users")
+with sqlite3.connect("profile.db") as con:
+    cur = con.cursor()
+    # cur.execute("""CREATE TABLE IF NOT EXISTS users(
+    # id INTEGER PRIMARY KEY AUTOINCREMENT,
+    # name TEXT NOT NULL,
+    # summa REAL,
+    # date TEXT
+    # )""")
+    cur.execute("DROP TABLE users")  # - удаляет таблицу
 
-# import requests
-#
-# response = requests.get('https://www.avion-market.ru/')
-#
-# print(response.status_code)
+
+
+
