@@ -1002,27 +1002,47 @@
 
 # dz 35
 
-import sqlite3
+# import sqlite3
+#
+# with sqlite3.connect("top-academy.db") as con:
+#     cur = con.cursor()
+#     cur.execute("""
+#     CREATE TABLE IF NOT EXISTS students(
+#         id INTEGER PRIMARY KEY AUTOINCREMENT,
+#         surname TEXT NOT NULL,
+#         name TEXT NOT NULL,
+#         patronymic TEXT NOT NULL,
+#         age INTEGER NOT NULL CHECK (age >= 16 AND age <= 45)
+#     )""")
+#     cur.execute("""
+#     CREATE TABLE IF NOT EXISTS courses(
+#         id INTEGER PRIMARY KEY AUTOINCREMENT,
+#         course TEXT NOT NULL
+#     )""")
+#     cur.execute("""
+#     CREATE TABLE IF NOT EXISTS records(
+#         ID_st INTEGER NOT NULL,
+#         ID_c INTEGER NOT NULL,
+#         FOREIGN KEY (ID_st) REFERENCES students(id)
+#         FOREIGN KEY (ID_c) REFERENCES courses(id)
+#     )""")
 
-with sqlite3.connect("top-academy.db") as con:
-    cur = con.cursor()
-    cur.execute("""
-    CREATE TABLE IF NOT EXISTS students(
-        id INTEGER PRIMARY KEY AUTOINCREMENT,
-        surname TEXT NOT NULL,
-        name TEXT NOT NULL,
-        patronymic TEXT NOT NULL,
-        age INTEGER NOT NULL CHECK (age >= 16 AND age <= 45)
-    )""")
-    cur.execute("""
-    CREATE TABLE IF NOT EXISTS courses(
-        id INTEGER PRIMARY KEY AUTOINCREMENT,
-        course TEXT NOT NULL
-    )""")
-    cur.execute("""
-    CREATE TABLE IF NOT EXISTS records(
-        ID_st INTEGER NOT NULL,
-        ID_c INTEGER NOT NULL,
-        FOREIGN KEY (ID_st) REFERENCES students(id)
-        FOREIGN KEY (ID_c) REFERENCES courses(id)
-    )""")
+# dz 39
+
+from jinja2 import Template
+
+html = """
+{% macro set_input(type='', name='', placeholder='') -%}
+    <input type="{{ type }}" name="{{ name }} placeholder="{{ placeholder }}" >
+{%- endmacro -%}
+
+<p>{{ set_input('text', 'firstname', 'Имя') }}</p>
+<p>{{ set_input('text', 'lastname', 'Фамилия') }}</p>
+<p>{{ set_input('text', 'address', 'Адрес') }}</p>
+<p>{{ set_input('tel', 'phone', 'Телефон') }}</p>
+<p>{{ set_input('email', 'email', 'Почта') }}</p>
+"""
+
+tm = Template(html)
+msg = tm.render()
+print(msg)

@@ -1,10 +1,11 @@
 from models.database import Base
 from sqlalchemy import Column, Integer, String, ForeignKey, Table
-
 from sqlalchemy.orm import relationship
 
 
-association_table = Table('association', Base.metadata,Column('lesson_id', Integer, ForeignKey('lessons.id')), Column('group_id', Integer, ForeignKey('groups.id')))
+association_table = Table('association', Base.metadata,
+                          Column('lesson_id', Integer, ForeignKey('lessons.id')),
+                          Column('group_id', Integer, ForeignKey('groups.id')))
 
 
 class Lesson(Base):
