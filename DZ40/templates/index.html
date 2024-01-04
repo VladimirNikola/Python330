@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+
+{% block title %}{{ super() }}{% endblock %}
+
+{% block content %}
+{{ super() }}
+<form action="/index" method="post">
+    <p>Фамилия: <input type="text" name="surname" required></p>
+    <p>Имя: <input type="text" name="name" required></p>
+    <p>Отчество: <input type="text" name="patronymic" required></p>
+    <p>Email: <input type="text" name="email" required></p>
+    <p>Дополнительные пожелания</p>
+    <p><textarea name="message" cols="30" rows="10"></textarea></p>
+    <p><input type="submit" value="Отправить"></p>
+</form>
+{% endblock %}

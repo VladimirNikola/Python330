@@ -8232,26 +8232,35 @@
 # env = Environment(loader=file_loader)
 #
 # tm = env.get_template('main.html')
-# msg = tm.render(users=persons)
+# msg = tm.render(users=persons, title="About Jinja ")
 #
 # print(msg)
 
-from jinja2 import Template
+# from jinja2 import Template
+#
+# html = """
+# {% macro set_input(type='', name='', placeholder='') -%}
+#     <input type="{{ type }}" name="{{ name }} placeholder="{{ placeholder }}" >
+# {%- endmacro -%}
+#
+# <p>{{ set_input('text', 'firstname', 'Имя') }}</p>
+# <p>{{ set_input('text', 'lastname', 'Фамилия') }}</p>
+# <p>{{ set_input('text', 'address', 'Адрес') }}</p>
+# <p>{{ set_input('tel', 'phone', 'Телефон') }}</p>
+# <p>{{ set_input('email', 'email', 'Почта') }}</p>
+# """
+#
+# tm = Template(html)
+# msg = tm.render()
+# print(msg)
 
-html = """
-{% macro set_input(type='', name='', placeholder='') -%}
-    <input type="{{ type }}" name="{{ name }} placeholder="{{ placeholder }}" >
-{%- endmacro -%}
+from jinja2 import Environment, FileSystemLoader
 
-<p>{{ set_input('text', 'firstname', 'Имя') }}</p>
-<p>{{ set_input('text', 'lastname', 'Фамилия') }}</p>
-<p>{{ set_input('text', 'address', 'Адрес') }}</p>
-<p>{{ set_input('tel', 'phone', 'Телефон') }}</p>
-<p>{{ set_input('email', 'email', 'Почта') }}</p>
-"""
+subs = ["Культура", "Наука", "Политика", "Спорт"]
+file_loader = FileSystemLoader('template')
+env = Environment(loader=file_loader)
 
-tm = Template(html)
-msg = tm.render()
+tm = env.get_template('about.html')
+msg = tm.render(list_table=subs)
+
 print(msg)
-
-
