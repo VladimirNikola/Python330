@@ -2,6 +2,7 @@ body{
     font-family: Verdana;
     background-image: url(body_bg.png);
     background-repeat: repeat;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
 }
 
 .menu{
@@ -16,4 +17,21 @@ body{
     margin: 0 auto;
     padding: 20px;
     box-sizing: border-box;
+}
+
+.flash{
+    padding: 10px;
+}
+.flash.success{
+    border: 1px solid #21DB56;
+    background: #AEFFC5;
+}
+.flash.error{
+    border: 1px solid #FF4343;
+    background: #FF9C9C;
+}
+
+.menu a{
+    font-weight: bold;
+    color: black;
 }
