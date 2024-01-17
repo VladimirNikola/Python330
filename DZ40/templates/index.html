@@ -1,13 +1,25 @@
 {% extends 'base.html' %}
 
-{% block title %}{{ super() }}{% endblock %}
+{% block title %}
+
+{{ super() }}
+
+{% endblock %}
 
 {% block content %}
 {{ super() }}
-<hr>
-<h2>Список пассажиров</h2>
 
 
+{% for p in posts %}
+<div class="block">
+    <div class="title"><a href="{{ url_for('add_info', alias=p.url) }}">{{ p.title }}</a></div>
+    <h3 class="price">{{ p.price }}</h3>
+    <div class="text">{{ p.text[:100] | striptags }}...</div>
+    <br>
+    <div class="buy"><input type="submit" value="Купить"></div>
+</div>
+
+{% endfor %}
 
 
 {% endblock %}
