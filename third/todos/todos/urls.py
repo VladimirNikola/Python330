@@ -1,5 +1,5 @@
 """
-URL configuration for password_generator_project project.
+URL configuration for todos project.
 
 The `urlpatterns` list routes URLs to views. For more information please see:
     https://docs.djangoproject.com/en/5.0/topics/http/urls/
@@ -16,11 +16,18 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
-from generator import views
+from todo import views
 
 urlpatterns = [
-    path('admin/', admin.site.urls),  # путь к админ панели
-    path('', views.home, name="home"),  # путь к html
-    path('password', views.password, name="password"),  # путь к html
-    path('rules', views.rules, name="rules"),
+    path('admin/', admin.site.urls),
+
+    # Auth
+    path('signup/', views.signupuser, name="signupuser"),
+    path('logout/', views.logoutuser, name="logoutuser"),
+    path('login/', views.loginuser, name="loginuser"),
+
+    # Todos
+    path('current/', views.currenttodos, name='currenttodos'),
+    path('', views.home, name='home'),
+
 ]

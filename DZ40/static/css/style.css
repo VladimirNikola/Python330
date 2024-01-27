@@ -33,6 +33,8 @@ body{
 }
 
 .block{
+   
+    margin: 0 auto;
     margin-top: -1px;
     margin-bottom: 40px;
     display: block;
